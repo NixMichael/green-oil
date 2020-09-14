@@ -1,0 +1,2 @@
+Add videos to blog instead of embedding straight into website
+Refills?
