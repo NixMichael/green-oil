@@ -10,29 +10,30 @@
         <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
         <a target="_blank" href="https://www.facebook.com/bicycleoil"><img src="../assets/ICONS/facebook.png" alt="Facebook" /></a>
       </div>
+      <!-- <div></div> -->
     </div>
     <div id="header-image">
       <!-- <img src="@/assets/IMAGES/BannerContactChairroomW.png" alt="Site Header Image" /> -->
     </div>
     <div class="navigation">
       <div>
-        <nuxt-link to="/">
+        <nuxt-link exact to="/">
           About Green Oil
           <!-- <img src="@/assets/ICONS/About.png" alt="About Green Oil"/> -->
         </nuxt-link>
-        <nuxt-link to="/products">
+        <nuxt-link exact to="/products">
           Our Products
           <!-- <img src="@/assets/ICONS/Products.png" alt="Products"/> -->
         </nuxt-link>
-        <nuxt-link to="faq">
+        <nuxt-link exact to="faq">
           FAQ
           <!-- <img src="@/assets/ICONS/ButQ&AA.gif" alt="Q and A"/> -->
         </nuxt-link>
-        <nuxt-link to="/trade">
+        <nuxt-link exact to="/trade">
           Stock Green Oil
           <!-- <img src="@/assets/ICONS/ButTradeA.gif" alt="Trade"/> -->
         </nuxt-link>
-        <nuxt-link to="/blog">
+        <nuxt-link exact to="/blog">
           Blog
         </nuxt-link>
       </div>

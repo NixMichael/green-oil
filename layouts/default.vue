@@ -5,6 +5,33 @@
       <Nuxt />
     </div>
     <Footer />
+    <div v-bind:class="{'shoppingCart':true, 'shoppingCartVisible':(viewCart)}">
+      <h2>Your Cart</h2>
+      <ul>
+        <li v-for="item in cart.items" :key="item.item">
+          <div>
+              <p>{{item.item}}</p>
+              <p>{{item.qty}}</p>
+              <p>£{{item.price}}</p>
+          </div>
+        </li>
+      </ul>
+      <p id="cartTotal">Total: £{{cart.total}}</p>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="collidernix@gmail.com">
+        <input type="hidden" name="item_name" value="Green Oil Order">
+        <input type="hidden" name="currency_code" value="GBP">
+        <input type="hidden" name="amount" :value="cart.total">
+        <input type="submit" name="submit" class="addToCart" value="Checkout">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+      <!-- <button>Checkout</button> -->
+      <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()">
+      <!-- <img src="@/assets/ICONS/shopping-cart-icon.png" alt="Cart"/> -->
+    </div>
+    </div>
   </div>
 </template>
 
@@ -13,14 +40,53 @@ import PageHeader from '@/components/PageHeader.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
-  data () {
-    return {
-      currentPage: 'bob'
-    }
-  },
   components: {
     PageHeader,
     Footer
+  },
+  data () {
+    return {
+      viewCart: false,
+      cart: {
+        key: 'greenoil',
+        items: [],
+        total: 0
+      }
+    }
+  },
+  methods: {
+    async sync () {
+      const _cart = JSON.stringify(this.cart.items)
+      await localStorage.setItem(this.cart.key, _cart)
+    },
+    calcTotal () {
+      this.cart.total = 0
+      let calc = 0
+      for (let i = 0; i < this.cart.items.length; i++) {
+        calc += this.cart.items[i].qty * this.cart.items[i].price
+      }
+
+      return calc
+    },
+    init () {
+      const _items = localStorage.getItem(this.cart.key)
+
+      if (_items) {
+        console.log(_items)
+        this.cart.items = JSON.parse(_items)
+      } else {
+        this.cart.items = []
+      }
+      this.cart.total = this.calcTotal()
+    },
+    showCart () {
+      this.init()
+      this.cart.total = this.calcTotal()
+      this.viewCart = !this.viewCart
+    }
+  },
+  mounted () {
+    this.init()
   }
 }
 </script>
@@ -51,6 +117,7 @@ body {
   text-align: center;
   box-shadow: 0 0 4px 0 black;
   background: $background;
+  position: relative;
 }
 
 .main-content {
@@ -59,11 +126,138 @@ body {
   background: white;
 }
 
-a {
-  color: white;
-  &:visited, &:hover, &:active {
-    color:white;
+.cartButton {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: -40px;
+  top: 35vh;
+  background: rgba($background,0.7);
+  background-image: url('../assets/ICONS/shopping-cart-icon.png');
+  background-size: 95%;
+  background-position-y: center;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: all 600ms ease-in;
+  cursor: pointer;
+
+  img {
+    width: 90%;
+    margin-top: 2px;
+  }
+
+  &:hover {
+    background: rgba($background, 0.3);
+    background-image: url('../assets/ICONS/shopping-cart-icon.png');
+    background-size: 95%;
+    background-position-y: center;
   }
 }
+
+.cartButtonMove {
+  right: 312px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: rgba(255,255,255,0.85);
+  background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
+  background-size: 95%;
+  background-position-y: center;
+  z-index: 5;
+  transition: all 600ms ease-out;
+
+  &:hover {
+    background: rgba(255,255,255,0.85);
+    background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
+    background-size: 95%;
+    background-position-y: center;
+  }
+}
+
+.shoppingCart {
+  position: fixed;
+  left: 100%;
+  top: 0px;
+  bottom: 0px;
+  width: 400px;
+  background: rgba(233, 233, 233, 0.95);
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 600ms ease-in-out;
+  padding: 2rem;
+
+  ul {
+    width: 85%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+    list-style: none;
+
+    li div {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+
+      p {
+        text-align: left;
+        width: 15%;
+        &:first-child {
+          width: 65%
+        }
+        &:last-child {
+          text-align: right;
+          width: 20%;
+        }
+      }
+    }
+  }
+
+#cartTotal {
+    width: 85%;
+    font-size: 1.5rem;
+    text-align: right;
+  }
+
+  .addToCart {
+    margin-top: 3rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    background: $button-bg-color;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
+    cursor: pointer;
+  }
+
+  // button {
+  //   border: none;
+  //   width: 50%;
+  //   margin: 3rem 0 0;
+  //   padding: 0.5rem 1rem;
+  //   color: white;
+  //   background: $background;
+  //   border-radius: 10px;
+  //   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.7);
+  //   cursor: pointer;
+  // }
+}
+
+.shoppingCartVisible {
+  // right: 0px;
+  left: calc(100vw - 400px);
+  box-shadow: 0 0 45px 35px rgba(0,0,0,0.5);
+}
+
+// a {
+//   color: white;
+//   &:visited, &:hover, &:focus {
+//     color:white;
+//   }
+// }
 
 </style>

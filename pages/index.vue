@@ -1,6 +1,8 @@
 <template>
   <div class="content">
-    <p class="feature-text">Green Oil: The world's greenest bicycle maintenance products</p>
+    <p class="feature-text">
+      Green Oil: The world's greenest bicycle maintenance products
+    </p>
     <br>
     <p>
       Simon created Green Oil after a mountain bike ride through the River Quaggy where he began wondering where he could find a biodegradable lubricant. Other lubes said 'Dangerous for the Environment' on the bottle. So Simon created his own whilst at Southampton University.
@@ -21,15 +23,15 @@
     <p class="feature-text">
       If you care about your bike and the planet you ride on, you're in the right place.
     </p>
-    <br>
+      <br>
     <p>
     We've been fighting PTFE and petrochemical pollution since 2007.
     </p>
-    <br>
+      <br>
     <p>
     We've been raising awareness of the harm petrochemicals and PTFE can do in a workshop environment, in your garage, and to the rivers and seas we all enjoy.
     </p>
-    <br>
+      <br>
     <p>
     From using recycled (not just recyclable) plastic in our bottles to plant based fully biodegradable formulas, we're protecting you, your bike, and the planet we share.
     </p>
