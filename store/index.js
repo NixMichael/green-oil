@@ -28,6 +28,8 @@ export const mutations = {
     } else {
       state.cart.items[i].qty += 1
     }
+
+    // Update cart total
     let calc = 0
     for (let i = 0; i < state.cart.items.length; i++) {
       calc += state.cart.items[i].qty * state.cart.items[i].price
@@ -43,6 +45,8 @@ export const mutations = {
       for (let i = 0; i < state.cart.items.length; i++) {
         calc += state.cart.items[i].qty * state.cart.items[i].price
       }
+
+      // Update cart total
       calc = calc.toFixed(2)
       state.cart.total = calc
     } else {
@@ -52,5 +56,28 @@ export const mutations = {
   },
   cartTotal: (state, payload) => {
     state.cart.total = payload
+  },
+  decreaseCartQty: (state, payload) => {
+    let i = 0
+    state.cart.items.filter((item, index) => {
+      if (item.item === payload.item) {
+        i = index
+      }
+    })
+    state.cart.items[i].qty -= 1
+
+    if (state.cart.items[i].qty < 1) {
+      state.cart.items.splice(i, 1)
+    }
+
+    localStorage.setItem(state.cart.key, JSON.stringify(state.cart.items))
+
+    // Update cart total
+    let calc = 0
+    for (let i = 0; i < state.cart.items.length; i++) {
+      calc += state.cart.items[i].qty * state.cart.items[i].price
+    }
+    calc = calc.toFixed(2)
+    state.cart.total = calc
   }
 }

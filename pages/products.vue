@@ -34,6 +34,7 @@
       </label>
       <button class="search">Search</button>
     </div>
+
     <div class="products">
       <div v-for="product in products" :key="product.title">
         <div>
@@ -57,7 +58,7 @@
             <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
           </form> -->
           <div id="cart-actions">
-            <button @click="newForCart(product.title, product.price)" :name="product.title">Add To Cart</button>
+            <button @click="newForCart(product.title, product.price, product.image)" :name="product.title">Add To Cart</button>
             <p v-if="inCart">You have X of these in <strong>your cart</strong></p>
           </div>
         </div>
@@ -82,8 +83,8 @@ export default {
       'addToCart',
       'updateCartTotal'
     ]),
-    newForCart (item, price) {
-      const fullContents = { item, price, qty: 1 }
+    newForCart (item, price, image) {
+      const fullContents = { item, price, qty: 1, image }
       this.addToCart(fullContents)
     }
   },
@@ -250,4 +251,5 @@ export default {
       box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
     }
   }
+
 </style>

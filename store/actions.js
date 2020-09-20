@@ -7,5 +7,8 @@ export default {
   },
   updateCart: ({ commit }, updatedCart) => {
     commit('updateCart', updatedCart)
+  },
+  decreaseQty: ({ commit }, item) => {
+    commit('decreaseCartQty', item)
   }
 }

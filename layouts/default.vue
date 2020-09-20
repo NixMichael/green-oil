@@ -9,11 +9,20 @@
       <h2>Your Cart</h2>
       <ul>
         <li v-for="item in this.$store.state.cart.items" :key="item.item">
-          <div>
+          <!-- <div> -->
+            <div>
+              <img src="@/assets/IMAGES/Products_01.jpg" alt="img"/>
+            </div>
+            <div>
               <p>{{item.item}}</p>
-              <p><img src="@/assets/ICONS/decrement.png"/>{{item.qty}}<img src="@/assets/ICONS/increment.png"/></p>
               <p>£{{item.price}}</p>
-          </div>
+            </div>
+            <div>
+              <img src="@/assets/ICONS/increment.png" @click="increaseQty(item)"/>
+              <p>{{item.qty}}</p>
+              <img src="@/assets/ICONS/decrement.png" @click="decreaseItemQty(item)"/>
+            </div>
+          <!-- </div> -->
         </li>
       </ul>
       <p id="cartTotal">Total: £{{this.$store.state.cart.total}}</p>
@@ -54,7 +63,8 @@ export default {
     ...mapActions([
       'addToCart',
       'updateCart',
-      'updateCartTotal'
+      'updateCartTotal',
+      'decreaseQty'
     ]),
     async sync () {
       const _cart = JSON.stringify(this.cart.items)
@@ -62,8 +72,13 @@ export default {
     },
     init () {
       const _items = localStorage.getItem(this.$store.state.cart.key)
-
       this.updateCart(_items)
+    },
+    increaseQty (item) {
+      this.addToCart(item)
+    },
+    decreaseItemQty (item) {
+      this.decreaseQty(item)
     },
     showCart () {
       this.init()
@@ -122,7 +137,7 @@ body {
   width: 40px;
   height: 40px;
   left: -40px;
-  top: 35vh;
+  top: 25vh;
   background: rgba($background,0.7);
   background-image: url('../assets/ICONS/shopping-cart-icon.png');
   background-size: 95%;
@@ -183,31 +198,92 @@ body {
   padding: 2rem;
 
   ul {
-    width: 85%;
+    width: 100%;
     max-width: 300px;
     margin: 2rem auto 0;
     list-style: none;
 
-    li div {
+    li {
+      padding: 0.5rem;
+      &:nth-child(2n + 1) {
+        background: rgba(255,255,255,0.4);
+      }
+      &:nth-child(2n) {
+        background: rgba(0,0,0,0.03);
+      }
+    }
+
+    li {
       display: flex;
       justify-content: space-between;
       font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
 
-      p {
-        text-align: left;
-        width: 19%;
-        &:first-child {
-          width: 63%
+      div:first-child {
+        width: 20%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        img {
+          margin-top: 5px;
+          max-width: 85%;
+          max-height: 85%;
         }
-        &:last-child {
-          text-align: right;
-          width: 18%;
+      }
+
+      div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 70%;
+
+        p {
+          text-align: left;
+          font-size: 1.1rem;
+
+          &:last-child {
+            font-size: 1rem;
+          }
         }
+      }
+
+      div:last-child {
+        width: 10%;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          max-width: 80%;
+        }
+
+        p {
+          height: 20px;
+          width: 20px;
+          font-size: 0.8rem;
+          padding-top: 2px;
+          color: white;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 50%;
+        }
+      }
+
+      // p {
+      //   text-align: left;
+      //   width: 19%;
+      //   &:first-child {
+      //     width: 63%
+      //   }
+      //   &:last-child {
+      //     text-align: right;
+      //     width: 18%;
+      //   }
         img {
           cursor: pointer;
         }
-      }
+      // }
     }
   }
 
