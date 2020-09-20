@@ -31,6 +31,10 @@ export default {
     padding: 0.5rem 0 2rem;
     font-size: 0.9rem;
 
+    a, a:visited {
+      color: rgb(228, 228, 228);
+    }
+
     #footer-links {
       margin: 1rem auto 2rem;
       width: 70%;

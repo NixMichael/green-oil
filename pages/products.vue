@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 <template>
   <div class="content">
       <p class="feature-text">
@@ -37,19 +35,19 @@
       <button class="search">Search</button>
     </div>
     <div class="products">
-      <div v-for="p in products" :key="p.title">
+      <div v-for="product in products" :key="product.title">
         <div>
-          <img :src="p.image" :alt="p.title" />
+          <img :src="product.image" :alt="product.title" />
         </div>
         <div>
           <h2>
-            {{ p.title }}
+            {{ product.title }}
           </h2>
           <ul>
-            <li v-for="d in p.desc" :key="d.index">{{ d }}</li>
+            <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
           </ul>
           <h2>
-            {{ p.price }}
+            £{{ product.price }}
           </h2>
 
           <!-- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -58,7 +56,10 @@
             <input type="submit" name="submit" class="addToCart" value="PP">
             <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
           </form> -->
-          <button @click="addToCart(p.title, p.price)" :name="p.title">Add To Cart</button>
+          <div id="cart-actions">
+            <button @click="newForCart(product.title, product.price)" :name="product.title">Add To Cart</button>
+            <p v-if="inCart">You have X of these in <strong>your cart</strong></p>
+          </div>
         </div>
       </div>
     </div>
@@ -66,46 +67,31 @@
 </template>
 
 <script>
-import productDetails from '@/components/product-details.js'
+import productDetails from '@/data/product-details.js'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   data () {
     return {
-      products: productDetails
-      // viewCart: false,
-      // cart: {
-      //   thekey: 'greenoil',
-      //   items: []
-      // }
+      products: productDetails,
+      inCart: false
     }
   },
   methods: {
-    addToCart (item, price) {
-      let fullContents = [{ item, price, qty: 1 }]
-      fullContents = JSON.stringify(fullContents)
-      localStorage.setItem('greenoil', fullContents)
+    ...mapActions([
+      'addToCart',
+      'updateCartTotal'
+    ]),
+    newForCart (item, price) {
+      const fullContents = { item, price, qty: 1 }
+      this.addToCart(fullContents)
     }
   },
-  // methods: {
-  //   async sync () {
-  //     const _cart = JSON.stringify(this.cart.items)
-  //     await localStorage.setItem(this.cart.thekey, _cart)
-  //   },
-  //   init () {
-  //     const _items = localStorage.getItem(this.cart.thekey)
-
-  //     if (_items) {
-  //       console.log(_items)
-  //       this.cart.items = JSON.parse(_items)
-  //     }
-  //   },
-  //   showCart () {
-  //     this.viewCart = !this.viewCart
-  //   }
-  // },
-  // mounted () {
-  //   this.init()
-  // },
+  computed: {
+    ...mapState([
+      'cart'
+    ])
+  },
   head () {
     return {
       title: 'Green Oil Products',
@@ -200,6 +186,7 @@ export default {
 
     &>div {
       width: 80%;
+      min-height: 400px;
       margin: 0 auto 3rem;
       padding: 2rem;
       border: 1px solid rgba(0,0,0,0.2);
@@ -224,11 +211,25 @@ export default {
           }
         }
       }
+      #cart-actions {
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        button {
+          margin-bottom: 0.8rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
     }
 
     img {
       max-height: 300px;
-      max-width: 350px;
+      max-width: 400px;
     }
 
     ul li {
