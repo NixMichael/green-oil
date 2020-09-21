@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     title: 'Green Oil Wet Chain Lube',
     desc: [
       'Prevents rust',
@@ -13,6 +14,7 @@ export default [
     checkout: 'XGCK7U2YQCFQ4'
   },
   {
+    id: 2,
     title: 'Green Oil Dry Chain Wax',
     desc: [
       'Dry conditions lube',
@@ -26,6 +28,7 @@ export default [
     checkout: 'ZT8NQJUECE4WA'
   },
   {
+    id: 3,
     title: 'Seeds',
     desc: [
       'Either Rocket Salad or Basil',
@@ -33,10 +36,11 @@ export default [
       '100% recycled paper packet',
       'Also part of our Eco Rider Deluxe set'
     ],
-    image: require('../assets/IMAGES/products/Rocket_Salad_Basil_Seeds.gif'),
-    price: 2
+    image: require('../assets/IMAGES/products/Rocket_Salad_Basil_Seeds.png'),
+    price: 2.99
   },
   {
+    id: 4,
     title: 'Bike Armour',
     desc: [
       'Protects frame from cable rub',
@@ -45,7 +49,7 @@ export default [
       'Covers scratches and more',
       'looks great on any bike'
     ],
-    image: require('../assets/IMAGES/products/Bike-Armour.gif'),
+    image: require('../assets/IMAGES/products/Bike-Armour.png'),
     price: 4.99
   },
   {
@@ -66,7 +70,7 @@ export default [
       'Displaces water',
       'Lubricates',
       'Protects from moisture',
-      'QUick and easy to use',
+      'Quick and easy to use',
       'Fluid content 100% biodegradable',
       'Comes with straw for hard to reach areas'
     ],
@@ -140,7 +144,7 @@ export default [
       'Helps stop fabric fibres going to landfill',
       'Quality thick fabric'
     ],
-    image: require('../assets/IMAGES/products/Bike-Armour.gif'),
+    image: require('../assets/IMAGES/products/Eco_Rag.gif'),
     price: 4.99
   },
   {

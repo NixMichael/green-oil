@@ -37,18 +37,20 @@
 
     <div class="products">
       <div v-for="product in products" :key="product.title">
-        <div>
+        <div class="img">
           <img :src="product.image" :alt="product.title" />
         </div>
-        <div>
+        <div class="title">
           <h2>
             {{ product.title }}
           </h2>
+        </div>
+        <div class="desc">
           <ul>
             <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
           </ul>
           <h2>
-            £{{ product.price }}
+            {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
           </h2>
 
           <!-- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -58,8 +60,8 @@
             <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
           </form> -->
           <div id="cart-actions">
-            <button @click="newForCart(product.title, product.price, product.image)" :name="product.title">Add To Cart</button>
-            <p v-if="inCart">You have X of these in <strong>your cart</strong></p>
+            <button @click="newForCart(product.title, product.price, product.image, product.id)" :name="product.title">Add To Cart</button>
+            <!-- <p v-if="$store.state.counter[product.id - 1] > 0">You have {{$store.state.counter[product.id - 1]}} of these in your cart</p> -->
           </div>
         </div>
       </div>
@@ -75,22 +77,26 @@ export default {
   data () {
     return {
       products: productDetails,
-      inCart: false
+      currencySymbol: this.$store.state.currency
+      // amount: product.price * $store.state.currencyConversion
     }
   },
   methods: {
     ...mapActions([
       'addToCart',
-      'updateCartTotal'
+      'updateCartTotal',
+      'checkFromCart'
     ]),
-    newForCart (item, price, image) {
-      const fullContents = { item, price, qty: 1, image }
+    newForCart (item, price, image, id) {
+      const fullContents = { item, price, image, qty: 1, id }
       this.addToCart(fullContents)
     }
   },
   computed: {
     ...mapState([
-      'cart'
+      'currency',
+      'cart',
+      'counter'
     ])
   },
   head () {
@@ -238,6 +244,99 @@ export default {
 
       &:nth-child(2n + 1) {
         color: rgb(27, 27, 27);
+      }
+    }
+
+    button {
+      width: 150px;
+      padding: 0.7rem 0;
+      color: white;
+      background: $button-bg-color;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
+    }
+  }
+
+// NEW PRODUCTS STYLES
+  .products {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    &>div {
+      width: 45%;
+      min-height: 400px;
+      margin: 0 auto 3rem;
+      padding: 1rem 2rem;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 10px;
+      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
+      // background: rgba(255, 0, 0, 0.3);
+      display: grid;
+      grid-template-areas: "title title" "img desc" "img desc";
+      // justify-content: space-around;
+
+      .title {
+        grid-area: title;
+        margin-top: 1rem;
+        // margin-bottom: 3rem;
+      }
+
+      .img {
+        grid-area: img;
+        margin-top: 2rem;
+        margin-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      img {
+        max-height: 300px;
+        max-width: 200px;
+      }
+
+      .desc {
+        grid-area: desc;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #cart-actions {
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        button {
+          margin-bottom: 0.8rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    ul {
+      margin-top: 2rem;
+      li {
+        list-style: none;
+
+        &:nth-child(2n + 1) {
+          color: rgb(27, 27, 27);
+        }
       }
     }
 

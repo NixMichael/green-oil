@@ -1,44 +1,58 @@
 <template>
-  <div class="container">
-    <PageHeader />
-    <div class="main-content">
-      <Nuxt />
+  <div class="wrap">
+    <div class="container">
+      <PageHeader />
+      <div class="main-content">
+        <Nuxt />
+      </div>
+      <Footer />
+      <div v-bind:class="{'shoppingCart':true, 'shoppingCartVisible':(viewCart)}">
+        <h2>Your Cart</h2>
+        <ul>
+          <li v-for="item in this.$store.state.cart.items" :key="item.item">
+            <!-- <div> -->
+              <div>
+                <img :src="item.image" :alt="item.item"/>
+              </div>
+              <div>
+                <p>{{item.item}}</p>
+                <p>{{ $store.state.currency[$store.state.currencySelect] }}{{ (item.price * $store.state.currencyConversion).toFixed(2) }}</p>
+              </div>
+              <div>
+                <img src="@/assets/ICONS/increment.png" @click="increaseItemQty(item)"/>
+                <p>{{item.qty}}</p>
+                <img src="@/assets/ICONS/decrement.png" @click="decreaseItemQty(item)"/>
+              </div>
+            <!-- </div> -->
+          </li>
+        </ul>
+        <p id="cartTotal">Total: {{ $store.state.currency[$store.state.currencySelect] }}{{(this.$store.state.cart.total * $store.state.currencyConversion).toFixed(2)}}</p>
+        <!-- SMART BUTTON -->
+        <!-- <div id="smart-button-container">
+          <div style="text-align: center;">
+            <div id="paypal-button-container"></div>
+          </div>
+        </div> -->
+        <!-- SMART BUTTON END -->
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="collidernix@gmail.com">
+          <input type="hidden" name="item_name" value="Green Oil Order">
+          <input type="hidden" name="currency_code" :value="this.$store.state.currencies[this.$store.state.currencySelect]">
+          <input type="hidden" name="amount" :value="cart.total">
+          <input type="submit" name="submit" class="addToCart" value="Checkout">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </div>
     </div>
-    <Footer />
-    <div v-bind:class="{'shoppingCart':true, 'shoppingCartVisible':(viewCart)}">
-      <h2>Your Cart</h2>
-      <ul>
-        <li v-for="item in this.$store.state.cart.items" :key="item.item">
-          <!-- <div> -->
-            <div>
-              <img src="@/assets/IMAGES/Products_01.jpg" alt="img"/>
-            </div>
-            <div>
-              <p>{{item.item}}</p>
-              <p>£{{item.price}}</p>
-            </div>
-            <div>
-              <img src="@/assets/ICONS/increment.png" @click="increaseQty(item)"/>
-              <p>{{item.qty}}</p>
-              <img src="@/assets/ICONS/decrement.png" @click="decreaseItemQty(item)"/>
-            </div>
-          <!-- </div> -->
-        </li>
-      </ul>
-      <p id="cartTotal">Total: £{{this.$store.state.cart.total}}</p>
-      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="collidernix@gmail.com">
-        <input type="hidden" name="item_name" value="Green Oil Order">
-        <input type="hidden" name="currency_code" value="GBP">
-        <input type="hidden" name="amount" :value="cart.total">
-        <input type="submit" name="submit" class="addToCart" value="Checkout">
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-      </form>
-
-      <!-- <button>Checkout</button> -->
-      <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()">
-      <!-- <img src="@/assets/ICONS/shopping-cart-icon.png" alt="Cart"/> -->
+    <div>
+      <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()"></div>
+      <div class="cartItems" v-if="this.$store.state.cart.items.length > 0 && !viewCart"><span>{{this.cartQty()}}</span></div>
+      <div class="currencyButton" @click="changeCurrency()">
+        <div>
+          <!-- <img :src="require(`@/assets/ICONS/${this.$store.state.currencies[this.$store.state.currencySelect]}.jpeg`)" /> -->
+          {{ $store.state.currency[$store.state.currencySelect] }}
+        </div>
       </div>
     </div>
   </div>
@@ -63,9 +77,14 @@ export default {
     ...mapActions([
       'addToCart',
       'updateCart',
-      'updateCartTotal',
-      'decreaseQty'
+      'increaseQty',
+      'decreaseQty',
+      'updateCurrency'
     ]),
+    changeCurrency () {
+      this.updateCurrency()
+      console.log(this.$store.state.currencies[this.$store.state.currencySelect])
+    },
     async sync () {
       const _cart = JSON.stringify(this.cart.items)
       await localStorage.setItem(this.cart.key, _cart)
@@ -74,20 +93,28 @@ export default {
       const _items = localStorage.getItem(this.$store.state.cart.key)
       this.updateCart(_items)
     },
-    increaseQty (item) {
-      this.addToCart(item)
+    increaseItemQty (item) {
+      this.increaseQty(item)
     },
     decreaseItemQty (item) {
       this.decreaseQty(item)
     },
     showCart () {
       this.init()
-      // this.cart.total = this.calcTotal()
       this.viewCart = !this.viewCart
+    },
+    cartQty () {
+      let total = 0
+      for (let i = 0; i < this.$store.state.cart.items.length; i++) {
+        total += this.$store.state.cart.items[i].qty
+      }
+      return total
     }
   },
   computed: {
     ...mapState([
+      // 'currencyIcons',
+      'currency',
       'cart'
     ])
   },
@@ -113,9 +140,15 @@ body {
   color: $normal-font;
 }
 
-.container {
+.wrap {
   margin: 0 auto;
-  width: 85vw;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin-left: 40px;
+  width: 85%;
   min-width: 800px;
   min-height: 100vh;
   display: grid;
@@ -123,7 +156,6 @@ body {
   text-align: center;
   box-shadow: 0 0 4px 0 black;
   background: $background;
-  position: relative;
 }
 
 .main-content {
@@ -133,19 +165,18 @@ body {
 }
 
 .cartButton {
-  position: absolute;
+  position: sticky;
   width: 40px;
   height: 40px;
-  left: -40px;
-  top: 25vh;
+  // right: -40px;
+  top: 30vh;
   background: rgba($background,0.7);
   background-image: url('../assets/ICONS/shopping-cart-icon.png');
   background-size: 95%;
   background-position-y: center;
-  border-left: 1px solid rgba(0,0,0,0.2);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  transition: all 600ms ease-in;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 600ms ease-in-out;
   cursor: pointer;
 
   img {
@@ -162,23 +193,59 @@ body {
 }
 
 .cartButtonMove {
-  right: 312px;
+  top: 1.5rem;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  background: rgba(255,255,255,0.85);
+  background: none;
   background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
   background-size: 95%;
   background-position-y: center;
-  z-index: 5;
-  transition: all 600ms ease-out;
+  z-index: 21;
+  transition: all 1200ms ease-out;
 
   &:hover {
-    background: rgba(255,255,255,0.85);
+    background: none;
     background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
     background-size: 95%;
     background-position-y: center;
+  }
+}
+
+.cartItems {
+  position: sticky;
+  width: 26px;
+  height: 26px;
+  top: calc(29vh - 12px);
+  margin-left: 22px;
+  color: white;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  background: rgba($background,0.8);
+  z-index: -5;
+  display: flex;
+  justify-content: center;
+}
+
+.currencyButton {
+  position: sticky;
+  width: 40px;
+  height: 40px;
+  top: 36vh;
+  // margin-left: 1px;
+  // color: white;
+  font-size: 1.3rem;
+  // background: rgba($titles-color,0.7);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 600ms ease-in-out;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div img {
+    max-width: 75%;
+    margin: 0 auto;
   }
 }
 
@@ -196,6 +263,7 @@ body {
   align-items: center;
   transition: all 600ms ease-in-out;
   padding: 2rem;
+  z-index: 20;
 
   ul {
     width: 100%;
@@ -235,7 +303,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: center;
         width: 70%;
 
         p {

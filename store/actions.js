@@ -10,5 +10,14 @@ export default {
   },
   decreaseQty: ({ commit }, item) => {
     commit('decreaseCartQty', item)
+  },
+  increaseQty: ({ commit }, item) => {
+    commit('increaseCartQty', item)
+  },
+  checkFromCart: ({ commit }, title) => {
+    commit('checkCart', title)
+  },
+  updateCurrency: ({ commit }) => {
+    commit('currency')
   }
 }
