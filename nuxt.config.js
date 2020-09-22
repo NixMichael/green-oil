@@ -24,13 +24,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    script: [
-      {
-        src: "https://www.paypal.com/sdk/js?client-id=sb&currency=GBP",
-        // data-sdk-integration-source: "button-factory"
-        defer: true
-      }
     ]
   },
   /*

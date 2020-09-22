@@ -19,5 +19,8 @@ export default {
   },
   updateCurrency: ({ commit }) => {
     commit('currency')
+  },
+  clearCart: ({ commit }) => {
+    commit('clearCartContents')
   }
 }

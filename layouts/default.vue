@@ -7,7 +7,10 @@
       </div>
       <Footer />
       <div v-bind:class="{'shoppingCart':true, 'shoppingCartVisible':(viewCart)}">
-        <h2>Your Cart</h2>
+        <div class="cart-header">
+          <h2>Your Cart</h2>
+        </div>
+        <div v-if="!paidFor" class="cart-contents">
         <ul>
           <li v-for="item in this.$store.state.cart.items" :key="item.item">
             <!-- <div> -->
@@ -26,23 +29,29 @@
             <!-- </div> -->
           </li>
         </ul>
+        </div>
+        <div v-if="paidFor" class="cart-contents">
+          <h3>Thank you. Your payment has been processed.</h3>
+        </div>
+        <div v-if="$store.state.cart.total <= 0" class="cart-contents">
+          <h3>Nothing to see here</h3>
+        </div>
         <p id="cartTotal">Total: {{ $store.state.currency[$store.state.currencySelect] }}{{(this.$store.state.cart.total * $store.state.currencyConversion).toFixed(2)}}</p>
-        <!-- SMART BUTTON -->
-        <!-- <div id="smart-button-container">
-          <div style="text-align: center;">
-            <div id="paypal-button-container"></div>
-          </div>
-        </div> -->
-        <!-- SMART BUTTON END -->
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+        <!-- PAYPAL FUNCTIONALITY APPEARS HERE -->
+        <div class="paypal-buttons">
+          <div ref="paypal"></div>
+        </div>
+
+        <!-- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="collidernix@gmail.com">
           <input type="hidden" name="item_name" value="Green Oil Order">
           <input type="hidden" name="currency_code" :value="this.$store.state.currencies[this.$store.state.currencySelect]">
-          <input type="hidden" name="amount" :value="cart.total">
+          <input type="hidden" name="amount" :value="(cart.total * $store.state.currencyConversion).toFixed(2)">
           <input type="submit" name="submit" class="addToCart" value="Checkout">
           <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-        </form>
+        </form> -->
       </div>
     </div>
     <div>
@@ -55,6 +64,9 @@
         </div>
       </div>
     </div>
+    <!-- <div class="payment-dialog">
+        <div ref="paypal"></div>
+    </div> -->
   </div>
 </template>
 
@@ -70,7 +82,9 @@ export default {
   },
   data () {
     return {
-      viewCart: false
+      viewCart: false,
+      loaded: false,
+      paidFor: false
     }
   },
   methods: {
@@ -79,11 +93,11 @@ export default {
       'updateCart',
       'increaseQty',
       'decreaseQty',
-      'updateCurrency'
+      'updateCurrency',
+      'clearCart'
     ]),
     changeCurrency () {
       this.updateCurrency()
-      console.log(this.$store.state.currencies[this.$store.state.currencySelect])
     },
     async sync () {
       const _cart = JSON.stringify(this.cart.items)
@@ -91,6 +105,7 @@ export default {
     },
     init () {
       const _items = localStorage.getItem(this.$store.state.cart.key)
+      this.paidFor = _items && false
       this.updateCart(_items)
     },
     increaseItemQty (item) {
@@ -109,6 +124,41 @@ export default {
         total += this.$store.state.cart.items[i].qty
       }
       return total
+    },
+    makePayment () {
+      const script = document.createElement('script')
+      script.src = 'https://www.paypal.com/sdk/js?client-id=AZ1OU1dqwYBJ_gHhYS7KkgJA81KXyFWqU1EEr0Y7g3hv8F3CA23vN3C4XTJ3eQlzQ37_SYVqYzbipUOR&currency=GBP'
+      script.addEventListener('load', this.setLoaded)
+      document.body.appendChild(script)
+    },
+    setLoaded () {
+      this.loaded = true
+      window.paypal
+        .Buttons({
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  description: 'Green Oil order',
+                  amount: {
+                    currency_code: 'GBP',
+                    value: (this.$store.state.cart.total * this.$store.state.currencyConversion).toFixed(2)
+                  }
+                }
+              ]
+            })
+          },
+          onApprove: async (data, actions) => {
+            const order = await actions.order.capture()
+            console.log(order)
+            this.paidFor = true
+            this.clearCart()
+          },
+          onError: (err) => {
+            console.log(err)
+          }
+        })
+        .render(this.$refs.paypal)
     }
   },
   computed: {
@@ -120,6 +170,7 @@ export default {
   },
   mounted () {
     this.init()
+    this.makePayment()
   }
 }
 </script>
@@ -169,7 +220,7 @@ body {
   width: 40px;
   height: 40px;
   // right: -40px;
-  top: 30vh;
+  top: 12rem;
   background: rgba($background,0.7);
   background-image: url('../assets/ICONS/shopping-cart-icon.png');
   background-size: 95%;
@@ -215,28 +266,31 @@ body {
   position: sticky;
   width: 26px;
   height: 26px;
-  top: calc(29vh - 12px);
-  margin-left: 22px;
+  top: 10rem;
+  margin-left: 6px;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1rem;
   border-radius: 50%;
-  background: rgba($background,0.8);
-  z-index: -5;
+  background: rgba($titles-color, 1);
+  z-index: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .currencyButton {
   position: sticky;
-  width: 40px;
-  height: 40px;
-  top: 36vh;
-  // margin-left: 1px;
+  width: 32px;
+  height: 32px;
+  top: 15rem;
+  margin-left: 3px;
   // color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   // background: rgba($titles-color,0.7);
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  // border-top-right-radius: 10px;
+  // border-bottom-right-radius: 10px;
+  border-radius: 50%;
+  border: 2px solid black;
   transition: all 600ms ease-in-out;
   cursor: pointer;
   display: flex;
@@ -262,12 +316,13 @@ body {
   justify-content: flex-start;
   align-items: center;
   transition: all 600ms ease-in-out;
-  padding: 2rem;
+  padding: 2rem 0;
+  // overflow-y: scroll;
   z-index: 20;
 
   ul {
-    width: 100%;
-    max-width: 300px;
+    width: 90%;
+    // max-width: 350px;
     margin: 2rem auto 0;
     list-style: none;
 
@@ -359,10 +414,11 @@ body {
     width: 85%;
     font-size: 1.5rem;
     text-align: right;
+    margin: 1rem 0 2rem;
   }
 
   .addToCart {
-    margin-top: 3rem;
+    margin: 3rem 0;
     padding: 0.5rem 1rem;
     color: white;
     background: $button-bg-color;
@@ -385,10 +441,65 @@ body {
   // }
 }
 
+.cart-header {
+  width: 100%;
+  padding-bottom: 1rem;
+
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: -10px;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 10px;
+  //   background: rgba(0,0,0,0.05);
+  //   box-shadow: 10px 0 10px 0 black;
+  //   z-index: 0;
+  // }
+}
+
+.cart-contents {
+  max-width: 80%;
+  min-height: 30%;
+  max-height: 70%;
+  overflow-y: hidden;
+  &:hover {
+    margin-left: 15px;
+    max-width: calc(80% + 15px);
+    overflow-y: scroll;
+  }
+}
+
 .shoppingCartVisible {
   // right: 0px;
   left: calc(100vw - 400px);
   box-shadow: 0 0 45px 35px rgba(0,0,0,0.5);
+}
+
+.payment-dialog {
+  position: fixed;
+  width: 450px;
+  height: 600px;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background: rgba(176, 182, 176, 0.9);
+  padding: 60px 30px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  opacity: 0;
+}
+
+.show-payment-box {
+  opacity: 1;
+}
+
+.paypal-buttons {
+  padding: 0 2rem;
+  align-self: flex-end;
 }
 
 // a {

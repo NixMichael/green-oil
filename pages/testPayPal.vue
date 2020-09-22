@@ -10,35 +10,36 @@
     <div v-if="paidFor">
       <h1>Noice, you bought a beautiful lamp!</h1>
     </div>
-
-    <div ref="paypal"></div>
+    <button @click="makePayment()">PAY</button>
+    <div ref='paypal'></div>
   </div>
 </template>
 
 <script>
-// import image from "../assets/IMAGES/Banner-Team.png"
+// import image from "../assets/lamp.png"
 export default {
+
   data: () => {
     return {
       loaded: false,
       paidFor: false,
       product: {
-        price: 7.77,
+        price: 3.33,
         description: 'leg lamp from that one movie',
-        img: '../assets/IMAGES/Banner-Team.png'
+        img: './assets/lamp.jpg'
       }
     }
   },
-  mounted: () => {
-    const script = document.createElement('script')
-    script.src =
-      'https://www.paypal.com/sdk/js?client-id=AZ1OU1dqwYBJ_gHhYS7KkgJA81KXyFWqU1EEr0Y7g3hv8F3CA23vN3C4XTJ3eQlzQ37_SYVqYzbipUOR&currency=GBP'
-    script.addEventListener('load', this.setLoaded)
-    document.body.appendChild(script)
-  },
   methods: {
-    setLoaded: () => {
+    makePayment () {
+      const script = document.createElement('script')
+      script.src = 'https://www.paypal.com/sdk/js?client-id=AZ1OU1dqwYBJ_gHhYS7KkgJA81KXyFWqU1EEr0Y7g3hv8F3CA23vN3C4XTJ3eQlzQ37_SYVqYzbipUOR&currency=GBP'
+      script.addEventListener('load', this.setLoaded)
+      document.body.appendChild(script)
+    },
+    setLoaded () {
       this.loaded = true
+      alert('loaded now')
       window.paypal
         .Buttons({
           createOrder: (data, actions) => {
@@ -57,7 +58,7 @@ export default {
           onApprove: async (data, actions) => {
             const order = await actions.order.capture()
             this.paidFor = true
-            console.log(order)
+            console.log(`Complete! --- ${order}`)
           },
           onError: (err) => {
             console.log(err)

@@ -107,6 +107,11 @@ export const mutations = {
     calc = calc.toFixed(2)
     state.cart.total = calc
   },
+  clearCartContents: (state) => {
+    state.cart.items = []
+    state.cart.total = 0
+    localStorage.clear(state.cart.key)
+  },
   currency: (state) => {
     let current = state.currencySelect
     if (current < 2) {
