@@ -193,6 +193,20 @@ body {
   color: $normal-font;
 }
 
+.feature-text {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 2rem;
+  color: $titles-color;
+  background-image: url('../assets/IMAGES/titles-chain.png');
+  background-size: 100%;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  font-family: 'Special Elite', cursive;
+  padding: 1rem 2rem 2.5rem;
+}
+
 .wrap {
   margin: 0 auto;
   display: flex;
