@@ -20,11 +20,7 @@
         <input type="submit" name="submit" class="addToCart" value="Checkout">
         <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
       </form>
-
-      <!-- <button>Checkout</button> -->
-      <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()">
-      <!-- <img src="@/assets/ICONS/shopping-cart-icon.png" alt="Cart"/> -->
-      </div>
+      <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()"></div>
     </div>
 </template>
 
@@ -54,7 +50,6 @@ export default {
     },
     showCart () {
       this.init()
-      // this.cart.total = this.calcTotal()
       this.viewCart = !this.viewCart
     }
   },
@@ -183,7 +178,6 @@ export default {
   }
 
   .shoppingCartVisible {
-    // right: 0px;
     left: calc(100vw - 400px);
     box-shadow: 0 0 45px 35px rgba(0,0,0,0.5);
   }

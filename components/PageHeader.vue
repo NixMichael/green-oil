@@ -10,28 +10,22 @@
         <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
         <a target="_blank" href="https://www.facebook.com/bicycleoil"><img src="../assets/ICONS/facebook.png" alt="Facebook" /></a>
       </div>
-      <!-- <div></div> -->
     </div>
     <div id="header-image">
-      <!-- <img src="@/assets/IMAGES/BannerContactChairroomW.png" alt="Site Header Image" /> -->
     </div>
     <div class="navigation">
       <div>
         <nuxt-link exact to="/">
           About Green Oil
-          <!-- <img src="@/assets/ICONS/About.png" alt="About Green Oil"/> -->
         </nuxt-link>
         <nuxt-link exact to="/products">
           Our Products
-          <!-- <img src="@/assets/ICONS/Products.png" alt="Products"/> -->
         </nuxt-link>
         <nuxt-link exact to="faq">
           FAQ
-          <!-- <img src="@/assets/ICONS/ButQ&AA.gif" alt="Q and A"/> -->
         </nuxt-link>
         <nuxt-link exact to="/trade">
           Stock Green Oil
-          <!-- <img src="@/assets/ICONS/ButTradeA.gif" alt="Trade"/> -->
         </nuxt-link>
         <nuxt-link exact to="/blog">
           Blog
@@ -89,11 +83,11 @@ export default {
   #header-image {
     border-top: 1px solid white;
     height: 250px;
-    // background-image: url('../assets/IMAGES/BannerContactChairroomW.png');
     background-image: url('../assets/IMAGES/Banner-Team.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
+
     img {
       width: 100%;
     }

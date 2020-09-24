@@ -198,7 +198,7 @@ export default [
       'Perhaps the best cyclist gift you\'ll ever buy',
       'Also includes a pack of seeds!'
     ],
-    image: require('../assets/IMAGES/products/Eco-Rider-Deluxe-Set.gif'),
+    image: require('../assets/IMAGES/products/Eco-Rider-Deluxe-Set.png'),
     price: 64.99
   }
 ]

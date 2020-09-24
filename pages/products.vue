@@ -49,9 +49,11 @@
           <ul>
             <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
           </ul>
-          <h2>
-            {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
-          </h2>
+          <div>
+            <h2>
+              {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
+            </h2>
+          </div>
 
           <!-- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_s-xclick">
@@ -192,96 +194,19 @@ export default {
     width: 100%;
 
     &>div {
-      width: 80%;
-      min-height: 400px;
-      margin: 0 auto 3rem;
-      padding: 2rem;
-      border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 10px;
-      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-      // background: rgba(255, 0, 0, 0.3);
-      display: flex;
-      justify-content: space-around;
-
-      div {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        &>* {
-          margin-bottom: 2rem;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-      #cart-actions {
-        min-height: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-
-        button {
-          margin-bottom: 0.8rem;
-        }
-
-        p {
-          font-size: 0.9rem;
-        }
-      }
-    }
-
-    img {
-      max-height: 300px;
-      max-width: 400px;
-    }
-
-    ul li {
-      list-style: none;
-
-      &:nth-child(2n + 1) {
-        color: rgb(27, 27, 27);
-      }
-    }
-
-    button {
-      width: 150px;
-      padding: 0.7rem 0;
-      color: white;
-      background: $button-bg-color;
-      border: none;
-      border-radius: 6px;
-      box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
-    }
-  }
-
-// NEW PRODUCTS STYLES
-  .products {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-
-    &>div {
-      width: 45%;
+      max-width: 85%;
       min-height: 400px;
       margin: 0 auto 3rem;
       padding: 1rem 2rem;
       border: 1px solid rgba(0,0,0,0.2);
       border-radius: 10px;
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-      // background: rgba(255, 0, 0, 0.3);
       display: grid;
       grid-template-areas: "title title" "img desc" "img desc";
-      // justify-content: space-around;
 
       .title {
         grid-area: title;
         margin-top: 1rem;
-        // margin-bottom: 3rem;
       }
 
       .img {
@@ -295,37 +220,15 @@ export default {
 
       img {
         max-height: 300px;
-        max-width: 200px;
+        max-width: 100%;
       }
 
       .desc {
+        max-width: 100%;
         grid-area: desc;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-      }
-
-      div {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      #cart-actions {
-        min-height: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-
-        button {
-          margin-bottom: 0.8rem;
-        }
-
-        p {
-          font-size: 0.9rem;
-        }
+        justify-content: space-around;
       }
     }
 
@@ -350,5 +253,47 @@ export default {
       box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
     }
   }
+
+@media screen and (min-width: 1000px) {
+  .products {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    &>div {
+      max-width: 48%;
+      justify-content: center;
+
+      .title {
+        grid-area: title;
+        margin-top: 1rem;
+      }
+
+      img {
+        max-width: 150px;
+      }
+
+      .desc {
+        justify-content: flex-end;
+      }
+
+      div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #cart-actions {
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
 
 </style>

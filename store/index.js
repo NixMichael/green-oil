@@ -3,7 +3,6 @@ export const state = () => ({
   currency: ['£', '€', '$'],
   currencySelect: 0,
   currencyConversion: 1,
-  // currencyIcons: ['../assets/ICONS/GBP.jpeg'],
   cart: {
     key: 'greenoil',
     items: [],
@@ -33,6 +32,7 @@ export const mutations = {
     }
 
     localStorage.setItem(state.cart.key, JSON.stringify(state.cart.items))
+
     // Update cart total
     let calc = 0
     for (let i = 0; i < state.cart.items.length; i++) {
@@ -120,7 +120,6 @@ export const mutations = {
       current = 0
     }
     state.currencySelect = current
-    console.log(state.currencySelect)
 
     switch (state.currencySelect) {
       case 0:
@@ -135,6 +134,5 @@ export const mutations = {
       default:
         state.currencyConversion = 1
     }
-    console.log(state.currencyConversion)
   }
 }

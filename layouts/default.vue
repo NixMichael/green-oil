@@ -10,10 +10,9 @@
         <div class="cart-header">
           <h2>Your Cart</h2>
         </div>
-        <div v-if="!paidFor" class="cart-contents">
+        <div v-if="$store.state.cart.total > 0" class="cart-contents">
         <ul>
           <li v-for="item in this.$store.state.cart.items" :key="item.item">
-            <!-- <div> -->
               <div>
                 <img :src="item.image" :alt="item.item"/>
               </div>
@@ -26,15 +25,14 @@
                 <p>{{item.qty}}</p>
                 <img src="@/assets/ICONS/decrement.png" @click="decreaseItemQty(item)"/>
               </div>
-            <!-- </div> -->
           </li>
         </ul>
         </div>
         <div v-if="paidFor" class="cart-contents">
-          <h3>Thank you. Your payment has been processed.</h3>
+          <h3><br><br>Thank you. Your payment has been processed.</h3>
         </div>
         <div v-if="$store.state.cart.total <= 0" class="cart-contents">
-          <h3>Nothing to see here</h3>
+          <h3><br><br>Your cart is empty.</h3>
         </div>
         <p id="cartTotal">Total: {{ $store.state.currency[$store.state.currencySelect] }}{{(this.$store.state.cart.total * $store.state.currencyConversion).toFixed(2)}}</p>
 
@@ -64,6 +62,8 @@
         </div>
       </div>
     </div>
+
+    <!-- IF PAYMENT BOX TO APPEAR SEPERATELY IN CENTRE OF SCREEN -->
     <!-- <div class="payment-dialog">
         <div ref="paypal"></div>
     </div> -->
@@ -84,7 +84,8 @@ export default {
     return {
       viewCart: false,
       loaded: false,
-      paidFor: false
+      paidFor: false,
+      resetCart: false
     }
   },
   methods: {
@@ -117,6 +118,7 @@ export default {
     showCart () {
       this.init()
       this.viewCart = !this.viewCart
+      console.log(this.paidFor)
     },
     cartQty () {
       let total = 0
@@ -152,6 +154,7 @@ export default {
             const order = await actions.order.capture()
             console.log(order)
             this.paidFor = true
+            this.resetCart = true
             this.clearCart()
           },
           onError: (err) => {
@@ -163,7 +166,6 @@ export default {
   },
   computed: {
     ...mapState([
-      // 'currencyIcons',
       'currency',
       'cart'
     ])
@@ -219,7 +221,6 @@ body {
   position: sticky;
   width: 40px;
   height: 40px;
-  // right: -40px;
   top: 12rem;
   background: rgba($background,0.7);
   background-image: url('../assets/ICONS/shopping-cart-icon.png');
@@ -284,11 +285,7 @@ body {
   height: 32px;
   top: 15rem;
   margin-left: 3px;
-  // color: white;
   font-size: 1.1rem;
-  // background: rgba($titles-color,0.7);
-  // border-top-right-radius: 10px;
-  // border-bottom-right-radius: 10px;
   border-radius: 50%;
   border: 2px solid black;
   transition: all 600ms ease-in-out;
@@ -317,12 +314,11 @@ body {
   align-items: center;
   transition: all 600ms ease-in-out;
   padding: 2rem 0;
-  // overflow-y: scroll;
+  overflow-y: scroll;
   z-index: 20;
 
   ul {
     width: 90%;
-    // max-width: 350px;
     margin: 2rem auto 0;
     list-style: none;
 
@@ -392,30 +388,19 @@ body {
           border-radius: 50%;
         }
       }
-
-      // p {
-      //   text-align: left;
-      //   width: 19%;
-      //   &:first-child {
-      //     width: 63%
-      //   }
-      //   &:last-child {
-      //     text-align: right;
-      //     width: 18%;
-      //   }
         img {
           cursor: pointer;
         }
-      // }
     }
   }
 
-#cartTotal {
-    width: 85%;
-    font-size: 1.5rem;
-    text-align: right;
-    margin: 1rem 0 2rem;
-  }
+  #cartTotal {
+      width: 85%;
+      font-size: 1.5rem;
+      text-align: right;
+      margin: 1rem 0 2rem;
+      padding: 0 2rem;
+    }
 
   .addToCart {
     margin: 3rem 0;
@@ -427,42 +412,18 @@ body {
     box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
     cursor: pointer;
   }
-
-  // button {
-  //   border: none;
-  //   width: 50%;
-  //   margin: 3rem 0 0;
-  //   padding: 0.5rem 1rem;
-  //   color: white;
-  //   background: $background;
-  //   border-radius: 10px;
-  //   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.7);
-  //   cursor: pointer;
-  // }
 }
 
 .cart-header {
   width: 100%;
   padding-bottom: 1rem;
-
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: -10px;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 10px;
-  //   background: rgba(0,0,0,0.05);
-  //   box-shadow: 10px 0 10px 0 black;
-  //   z-index: 0;
-  // }
 }
 
 .cart-contents {
   max-width: 80%;
-  min-height: 30%;
-  max-height: 70%;
+  height: 70%;
   overflow-y: hidden;
+  justify-self: flex-start;
   &:hover {
     margin-left: 15px;
     max-width: calc(80% + 15px);
@@ -471,27 +432,27 @@ body {
 }
 
 .shoppingCartVisible {
-  // right: 0px;
   left: calc(100vw - 400px);
   box-shadow: 0 0 45px 35px rgba(0,0,0,0.5);
 }
 
-.payment-dialog {
-  position: fixed;
-  width: 450px;
-  height: 600px;
-  top: 50vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  margin: auto;
-  background: rgba(176, 182, 176, 0.9);
-  padding: 60px 30px 30px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-y: scroll;
-  opacity: 0;
-}
+// IF PAYMENT BOX TO APPEAR SEPERATELY IN CENTRE OF SCREEN
+// .payment-dialog {
+//   position: fixed;
+//   width: 450px;
+//   height: 600px;
+//   top: 50vh;
+//   left: 50vw;
+//   transform: translate(-50%, -50%);
+//   margin: auto;
+//   background: rgba(176, 182, 176, 0.9);
+//   padding: 60px 30px 30px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-start;
+//   overflow-y: scroll;
+//   opacity: 0;
+// }
 
 .show-payment-box {
   opacity: 1;
@@ -499,14 +460,6 @@ body {
 
 .paypal-buttons {
   padding: 0 2rem;
-  align-self: flex-end;
 }
-
-// a {
-//   color: white;
-//   &:visited, &:hover, &:focus {
-//     color:white;
-//   }
-// }
 
 </style>
