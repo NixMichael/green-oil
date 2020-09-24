@@ -55,7 +55,7 @@
     <div>
       <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()"></div>
       <div class="cartItems" v-if="this.$store.state.cart.items.length > 0 && !viewCart"><span>{{this.cartQty()}}</span></div>
-      <div class="currencyButton" @click="changeCurrency()">
+      <div v-if="!viewCart" class="currencyButton" @click="changeCurrency()">
         <div>
           <!-- <img :src="require(`@/assets/ICONS/${this.$store.state.currencies[this.$store.state.currencySelect]}.jpeg`)" /> -->
           {{ $store.state.currency[$store.state.currencySelect] }}
@@ -338,29 +338,29 @@ body {
 
     li {
       padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      min-height: 85px;
+
       &:nth-child(2n + 1) {
         background: rgba(255,255,255,0.4);
       }
       &:nth-child(2n) {
         background: rgba(0,0,0,0.03);
       }
-    }
-
-    li {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
 
       div:first-child {
         width: 20%;
         display: flex;
         align-items: flex-start;
         justify-content: center;
+
         img {
           margin-top: 5px;
-          max-width: 85%;
-          max-height: 85%;
+          max-width: 100%;
+          max-height: 65px;
         }
       }
 
@@ -387,6 +387,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
 
         img {
           max-width: 80%;
