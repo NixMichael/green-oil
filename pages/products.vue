@@ -42,9 +42,9 @@
     <div class="products">
       <div class="card" v-for="product in products" :key="product.title">
 
-          <h2 class="title">
+          <div class="title">
             {{ product.title }}
-          </h2>
+          </div>
 
           <div class="main-card-contents">
             <div class="img">
@@ -227,27 +227,31 @@ export default {
 
       .main-card-contents {
         width: 100%;
-        max-height: 85%;
+        height: 85%;
+        margin-bottom: 1rem;
         display: flex;
       }
 
       .img {
         display: flex;
-        justify-content: flex-start;
-        align-self: flex-start;
-        flex-basis: 55%;
+        // justify-content: flex-start;
+        // align-self: flex-start;
+        flex-basis: 60%;
 
         img {
           max-width: 100%;
           max-height: 100%;
+          margin-top: 1rem;
+          align-self: flex-start;
         }
       }
 
       .desc {
         margin: 1rem 0;
+        flex-basis: 40%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         height: 100%;
         .details {
@@ -369,7 +373,6 @@ export default {
         margin: 1rem 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         height: 100%;
         .details {
           ul {
