@@ -17,7 +17,7 @@
                 <img :src="item.image" :alt="item.item"/>
               </div>
               <div>
-                <p>{{item.item}}</p>
+                <p class="cart-item-description">{{item.item}}</p>
                 <p>{{ $store.state.currency[$store.state.currencySelect] }}{{ (item.price * $store.state.currencyConversion).toFixed(2) }}</p>
               </div>
               <div>
@@ -209,6 +209,7 @@ body {
 
 .wrap {
   margin: 0 auto;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
 }
@@ -369,7 +370,8 @@ body {
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        width: 70%;
+        // width: 70%;
+        min-width: 250px;
 
         p {
           text-align: left;
