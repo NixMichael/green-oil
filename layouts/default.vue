@@ -194,17 +194,24 @@ body {
 }
 
 .feature-text {
-  width: 70%;
-  margin: 0 auto;
   font-size: 2rem;
   color: $titles-color;
-  background-image: url('../assets/IMAGES/titles-chain.png');
-  background-size: 100%;
-  background-position-x: center;
-  background-position-y: bottom;
-  background-repeat: no-repeat;
   font-family: 'Special Elite', cursive;
   padding: 1rem 2rem 2.5rem;
+  position: relative;
+  min-width: 600px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background: url('../assets/IMAGES/titles-chain.png') no-repeat;
+      background-size: 100% 100%;
+      background-position-x: center;
+    }
 }
 
 .wrap {
@@ -370,7 +377,6 @@ body {
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        // width: 70%;
         min-width: 250px;
 
         p {

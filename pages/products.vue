@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-      <p class="feature-text">
-        Welcome to our shop!<br>
-      </p>
+      <div class="feature-text">
+        Welcome to our shop!
+      </div>
       <br><br>
       <div id="covid-update">
         <h4>We're running as normal during the COVID-19 pandemic</h4>
@@ -22,52 +22,54 @@
       We ship World Wide. Click on the $USA button for all non-UK and non-European Union orders.
 
     <div id="product-search">
-      <label>Product Type:
-        <select>
-          <option name="allProducts">All Products</option>
-          <option name="lubes">Lubes</option>
-          <option name="grease">Greases</option>
-        </select>
-      </label>
-      <label>Search by keyword:
-        <input type="text" />
-      </label>
-      <button class="search">Search</button>
-    </div>
-
-    <div class="products">
-      <div v-for="product in products" :key="product.title">
-        <div class="img">
-          <img :src="product.image" :alt="product.title" />
+      <div>
+        <div>
+        <label>Product Type: </label>
+          <select>
+            <option name="allProducts">All Products</option>
+            <option name="lubes">Lubes</option>
+            <option name="grease">Greases</option>
+          </select>
         </div>
-        <div class="title">
-          <h2>
-            {{ product.title }}
-          </h2>
-        </div>
-        <div class="desc">
-          <ul>
-            <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
-          </ul>
-          <div>
-            <h2>
-              {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
-            </h2>
-          </div>
-
-          <!-- <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" :value="p.checkout">
-            <input type="submit" name="submit" class="addToCart" value="PP">
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-          </form> -->
-          <div id="cart-actions">
-            <button @click="newForCart(product.title, product.price, product.image, product.id)" :name="product.title">Add To Cart</button>
-            <!-- <p v-if="$store.state.counter[product.id - 1] > 0">You have {{$store.state.counter[product.id - 1]}} of these in your cart</p> -->
-          </div>
+        <div>
+        <label>Keyword: </label>
+          <input type="text" />
         </div>
       </div>
+      <button class="search">Search</button>
     </div>
+<!-- PRODUCT CARDS -->
+    <div class="products">
+      <div class="card" v-for="product in products" :key="product.title">
+
+          <h2 class="title">
+            {{ product.title }}
+          </h2>
+
+          <div class="main-card-contents">
+            <div class="img">
+              <img :src="product.image" :alt="product.title" />
+            </div>
+
+            <div class="desc">
+              <div class="details">
+                <ul>
+                  <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
+                </ul>
+              </div>
+              <div class="price">
+                <h2>
+                  {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div id="cart-actions">
+            <button @click="newForCart(product.title, product.price, product.image, product.id)" :name="product.title">Add To Cart</button>
+          </div>
+      </div>
+    </div>
+<!-- PRODUCT CARDS -->
   </div>
 </template>
 
@@ -117,18 +119,10 @@ export default {
 
 <style lang="scss" scoped>
 
-  .feature-text {
-    width: 70%;
-    margin: 0 auto;
-    font-size: 2rem;
-    color: $titles-color;
-    background-image: url('../assets/IMAGES/titles-chain.png');
-    background-size: 100%;
-    background-position-x: center;
-    background-position-y: bottom;
-    background-repeat: no-repeat;
-    font-family: 'Special Elite', cursive;
-    padding: 1rem 2rem 2.5rem;
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   h4 {
@@ -145,13 +139,34 @@ export default {
   }
 
   #product-search {
-    padding: 1rem 0;
+    padding: 0 2rem;
     margin: 1rem auto 0;
+    min-width: 100%;
     background: rgba(21, 141, 41, 0.15);
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     position: relative;
+
+    div:first-child {
+      max-width: 80%;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      div {
+        width: 50%;
+        min-width: 300px;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        label {
+          margin-right: 10px;
+        }
+      }
+    }
 
     &::before {
       position: absolute;
@@ -174,7 +189,7 @@ export default {
     }
 
     input, select {
-      width: 180px;
+      min-width: 180px;
       height: 2rem;
     }
 
@@ -191,109 +206,186 @@ export default {
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    max-width: 800px;
 
-    &>div {
-      max-width: 85%;
+    .card {
+      width: 45%;
       min-height: 400px;
       margin: 0 auto 3rem;
       padding: 1rem 2rem;
       border: 1px solid rgba(0,0,0,0.2);
       border-radius: 10px;
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-      display: grid;
-      grid-template-areas: "title title" "img desc" "img desc";
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .title {
-        grid-area: title;
-        margin-top: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .main-card-contents {
+        width: 100%;
+        max-height: 85%;
+        display: flex;
       }
 
       .img {
-        grid-area: img;
-        margin-top: 2rem;
-        margin-right: 1rem;
         display: flex;
-        flex-direction: column;
         justify-content: flex-start;
-      }
+        align-self: flex-start;
+        flex-basis: 55%;
 
-      img {
-        max-height: 300px;
-        max-width: 100%;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
       }
 
       .desc {
-        max-width: 100%;
-        grid-area: desc;
+        margin: 1rem 0;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-      }
-    }
+        align-items: center;
+        height: 100%;
+        .details {
+          ul {
+            list-style: none;
 
-    ul {
-      margin-top: 2rem;
-      li {
-        list-style: none;
-
-        &:nth-child(2n + 1) {
-          color: rgb(27, 27, 27);
+            li:nth-child(2n) {
+              color: rgb(20,20,20);
+            }
+          }
+        }
+        .price {
+          height: 2rem;
+          margin: 1rem 0;
         }
       }
-    }
 
     button {
       width: 150px;
+      margin-bottom: 1rem;
       padding: 0.7rem 0;
       color: white;
       background: $button-bg-color;
       border: none;
       border-radius: 6px;
       box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
+      flex-basis: 15%;
     }
+    }
+
+    // &>div {
+    //   max-width: 85%;
+    //   min-height: 400px;
+    //   margin: 0 auto 3rem;
+    //   padding: 1rem 2rem;
+    //   border: 1px solid rgba(0,0,0,0.2);
+    //   border-radius: 10px;
+    //   box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
+    //   display: grid;
+    //   grid-template-areas: "title title" "img desc" "img desc";
+
+    //   .title {
+    //     grid-area: title;
+    //   }
+
+    //   .img {
+    //     grid-area: img;
+    //     margin-top: 2rem;
+    //     margin-right: 1rem;
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: flex-start;
+    //   }
+
+    //   img {
+    //     max-height: 300px;
+    //     max-width: 100%;
+    //   }
+
+    //   .desc {
+    //     max-width: 100%;
+    //     grid-area: desc;
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: space-around;
+
+    //     div {
+    //       margin: 1rem 0;
+    //     }
+    //   }
+    // }
+
+    // ul {
+    //   margin-top: 2rem;
+    //   li {
+    //     list-style: none;
+
+    //     &:nth-child(2n + 1) {
+    //       color: rgb(27, 27, 27);
+    //     }
+    //   }
+    // }
+
+    // button {
+    //   width: 150px;
+    //   padding: 0.7rem 0;
+    //   color: white;
+    //   background: $button-bg-color;
+    //   border: none;
+    //   border-radius: 6px;
+    //   box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
+    // }
   }
 
-@media screen and (min-width: 1000px) {
-  .products {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+@media screen and (max-width: 1000px) {
 
-    &>div {
-      max-width: 48%;
-      justify-content: center;
+    .card {
+      min-width: 85%;
 
-      .title {
-        grid-area: title;
-        margin-top: 1rem;
+      .main-card-contents {
+        width: 100%;
+        max-height: 85%;
+        display: flex;
       }
 
-      img {
-        max-width: 150px;
+      .img {
+        display: flex;
+        justify-content: flex-start;
+        align-self: flex-start;
+        flex-basis: 55%;
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
       }
 
       .desc {
-        justify-content: flex-end;
-      }
-
-      div {
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+        .details {
+          ul {
+            list-style: none;
 
-      #cart-actions {
-        min-height: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+            li:nth-child(2n) {
+              color: rgb(20,20,20);
+            }
+          }
+        }
+        .price {
+          height: 2rem;
+          margin: 1rem 0;
+        }
       }
     }
-  }
 }
 
 </style>

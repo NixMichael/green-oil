@@ -85,7 +85,7 @@ export default {
     height: 250px;
     background-image: url('../assets/IMAGES/Banner-Team.png');
     background-position: center;
-    background-size: 100%;
+    background-size: auto 100%;
     background-repeat: no-repeat;
 
     img {
