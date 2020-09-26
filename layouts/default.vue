@@ -50,11 +50,13 @@
           <input type="submit" name="submit" class="addToCart" value="Checkout">
           <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
         </form> -->
+        <div id="close-cart" @click="closeCart()"><img src="../assets/ICONS/shopping-cart-icon-open.png" /></div>
       </div>
     </div>
     <div class="cart-actions">
       <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()"></div>
       <div class="cartItems" v-if="this.$store.state.cart.items.length > 0 && !viewCart"><span>{{this.cartQty()}}</span></div>
+      <div class="cartItems-mobile">Cart total: {{this.$store.state.cart.total}}</div>
       <div v-if="!viewCart" class="currencyButton" @click="changeCurrency()">
         <div>
           <!-- <img :src="require(`@/assets/ICONS/${this.$store.state.currencies[this.$store.state.currencySelect]}.jpeg`)" /> -->
@@ -118,7 +120,9 @@ export default {
     showCart () {
       this.init()
       this.viewCart = !this.viewCart
-      console.log(this.paidFor)
+    },
+    closeCart () {
+      this.viewCart = !this.viewCart
     },
     cartQty () {
       let total = 0
@@ -192,6 +196,10 @@ body {
   color: $normal-font;
 }
 
+.cartItems-mobile {
+  display: none;
+}
+
 .wrap {
   margin: 0 auto;
   max-width: 1200px;
@@ -239,6 +247,7 @@ body {
 }
 
 .cartButton {
+  visibility: visible;
   position: sticky;
   width: 40px;
   height: 40px;
@@ -261,6 +270,7 @@ body {
 }
 
 .cartButtonMove {
+  visibility: hidden;
   top: 1.5rem;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -332,6 +342,20 @@ body {
   padding: 2rem 0;
   overflow-y: scroll;
   z-index: 20;
+
+  #close-cart {
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    margin: 1.5rem 2.5rem 0 0;
+    cursor: pointer;
+  }
 
   ul {
     width: 90%;
@@ -412,12 +436,12 @@ body {
   }
 
   #cartTotal {
-      width: 85%;
-      font-size: 1.5rem;
-      text-align: right;
-      margin: 1rem 0 2rem;
-      padding: 0 2rem;
-    }
+    width: 85%;
+    font-size: 1.5rem;
+    text-align: right;
+    margin: 1rem 0 2rem;
+    padding: 0 2rem;
+  }
 
   .addToCart {
     margin: 3rem 0;
@@ -451,6 +475,11 @@ body {
 .shoppingCartVisible {
   left: calc(100vw - 400px);
   box-shadow: 0 0 45px 35px rgba(0,0,0,0.5);
+
+  #close-cart {
+    visibility: visible;
+    transition: all 600ms ease;
+  }
 }
 
 // IF PAYMENT BOX TO APPEAR SEPERATELY IN CENTRE OF SCREEN
@@ -499,7 +528,8 @@ body {
     position: fixed;
     display: flex;
     justify-content: space-around;
-    background: rgba(0,0,0,0.7);
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.5);
     padding: 0.5rem 0;
     bottom: 0;
     left: 0;
@@ -507,14 +537,37 @@ body {
 
     .cartButton {
       border-radius: 50%;
-      background: transparent;
       background-image: url('../assets/ICONS/shopping-cart-icon.png');
-      border: 2px solid white;
+      border: 2px solid black;
+    }
+
+.cartButtonMove {
+  color: black;
+  background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
+  background-size: 95%;
+  background-position-y: center;
+  z-index: 21;
+  transition: all 1200ms ease-out;
+
+  &:hover {
+    background: none;
+    background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
+    background-size: 95%;
+    background-position-y: center;
+  }
+}
+
+    .cartItems {
+      display: none;
+    }
+
+    .cartItems-mobile {
+      display: block;
     }
 
     .currencyButton {
-      border: 2px solid white;
-      color: white;
+      border: 2px solid black;
+      color: black;
     }
   }
 
