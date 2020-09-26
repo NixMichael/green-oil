@@ -11,7 +11,7 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Wet_Chain_Lube-Bottle-Green_Oil.png'),
     price: 6.99,
-    checkout: 'XGCK7U2YQCFQ4'
+    style: 'main-card-contents'
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Dry_Chain_Wax-bottle-Green_Oil.png'),
     price: 14.99,
-    checkout: 'ZT8NQJUECE4WA'
+    style: 'main-card-contents'
   },
   {
     id: 3,
@@ -37,7 +37,8 @@ export default [
       'Also part of our Eco Rider Deluxe set'
     ],
     image: require('../assets/IMAGES/products/Rocket_Salad_Basil_Seeds.png'),
-    price: 2.99
+    price: 2.99,
+    style: 'main-card-contents'
   },
   {
     id: 4,
@@ -50,7 +51,8 @@ export default [
       'looks great on any bike'
     ],
     image: require('../assets/IMAGES/products/Bike-Armour.png'),
-    price: 4.99
+    price: 4.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Green Oil On Tour',
@@ -62,7 +64,8 @@ export default [
       'Looks great on any bike'
     ],
     image: require('../assets/IMAGES/products/On_Tour-Bottle-Green-Oil.gif'),
-    price: 2.39
+    price: 2.39,
+    style: 'main-card-contents'
   },
   {
     title: 'Green Oil EcoSpray Lube',
@@ -75,7 +78,8 @@ export default [
       'Comes with straw for hard to reach areas'
     ],
     image: require('../assets/IMAGES/products/EcoSpray_Lube-Bottle-Green_Oil.gif'),
-    price: 7.99
+    price: 7.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Ecogrease',
@@ -86,7 +90,8 @@ export default [
       'No fits most grease guns!'
     ],
     image: require('../assets/IMAGES/products/Ecogrease-Bottle-Green-Oil.gif'),
-    price: 8.99
+    price: 8.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Agent Apple Degreaser (300ml)',
@@ -97,7 +102,8 @@ export default [
       'Utilizes fermented apple extract, natural alcohol, and orange extracts'
     ],
     image: require('../assets/IMAGES/products/Agent-Apple-Extreme.gif'),
-    price: 14.99
+    price: 14.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Green Clean Bike Cleaner',
@@ -110,7 +116,8 @@ export default [
       'Nanotech free'
     ],
     image: require('../assets/IMAGES/products/Green-Clean-bike-cleaner.gif'),
-    price: 9.99
+    price: 9.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Clean Chain Degreaser Jelly (100ml)',
@@ -122,7 +129,8 @@ export default [
       'Sticks to your chain, scrub it off to clean!'
     ],
     image: require('../assets/IMAGES/products/Clean-Chain-Degreaser.gif'),
-    price: 5.99
+    price: 5.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Ultra Chain Brush',
@@ -132,7 +140,8 @@ export default [
       'Due to COVID-19 and trees taking time to grow, an ideal replacement for our FSC wooden brush'
     ],
     image: require('../assets/IMAGES/products/Ultra-Chain-Brush.gif'),
-    price: 14.99
+    price: 14.99,
+    style: 'main-card-contents'
   },
   {
     title: 'EcoRag',
@@ -145,7 +154,8 @@ export default [
       'Quality thick fabric'
     ],
     image: require('../assets/IMAGES/products/Eco_Rag.gif'),
-    price: 4.99
+    price: 4.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Green Oil Bamboo Detail Brush',
@@ -156,7 +166,8 @@ export default [
       'Great for hard to reach places'
     ],
     image: require('../assets/IMAGES/products/Bamboo_Brush.gif'),
-    price: 7.99
+    price: 7.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Green Oil Fruit Box Rack',
@@ -168,8 +179,9 @@ export default [
       'Does not include the products shown, you get the wood rack only for this great price!',
       'Measures approximately 24cm x 24cm x 5.5cm'
     ],
-    image: require('../assets/IMAGES/products/FruitBox.gif'),
-    price: 21.99
+    image: require('../assets/IMAGES/products/FruitBox.png'),
+    price: 21.99,
+    style: 'main-card-contents'
   },
   {
     title: 'Eco Rider Deluxe Box (empty)',
@@ -182,7 +194,8 @@ export default [
       'Measures approximately 35cm x 15cm x 14cm'
     ],
     image: require('../assets/IMAGES/products/Eco_Rider_Deluxe_Box.gif'),
-    price: 4.99
+    price: 4.99,
+    style: 'main-card-contents wide-image'
   },
   {
     title: 'Eco Rider Deluxe Set',
@@ -199,6 +212,7 @@ export default [
       'Also includes a pack of seeds!'
     ],
     image: require('../assets/IMAGES/products/Eco-Rider-Deluxe-Set.png'),
-    price: 64.99
+    price: 64.99,
+    style: 'main-card-contents wide-image'
   }
 ]

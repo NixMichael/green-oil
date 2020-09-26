@@ -46,7 +46,7 @@
             {{ product.title }}
           </div>
 
-          <div class="main-card-contents">
+          <div :class="product.style">
             <div class="img">
               <img :src="product.image" :alt="product.title" />
             </div>
@@ -58,9 +58,9 @@
                 </ul>
               </div>
               <div class="price">
-                <h2>
+                <h1>
                   {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
-                </h2>
+                </h1>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default {
     border-radius: 10px;
     padding: 2rem;
     width: 70%;
-    margin: 0 auto;
+    margin: 1.5rem auto;
   }
 
   #product-search {
@@ -168,24 +168,23 @@ export default {
       }
     }
 
-    &::before {
+    &::before, &::after {
       position: absolute;
       content: '';
+      border-bottom: 50px solid transparent;
+      border-top: 50px solid transparent;
+    }
+
+    &::before {
       left: 0;
       border-left: 15px solid white;
       border-right: 15px solid transparent;
-      border-bottom: 35px solid transparent;
-      border-top: 35px solid transparent;
     }
 
     &::after {
-      position: absolute;
-      content: '';
       right: 0;
-      border-right: 15px solid white;
       border-left: 15px solid transparent;
-      border-bottom: 35px solid transparent;
-      border-top: 35px solid transparent;
+      border-right: 15px solid white;
     }
 
     input, select {
@@ -209,7 +208,7 @@ export default {
     max-width: 800px;
 
     .card {
-      width: 45%;
+      width: 450px;
       min-height: 400px;
       margin: 0 auto 3rem;
       padding: 1rem 2rem;
@@ -232,54 +231,62 @@ export default {
         display: flex;
       }
 
-      .img {
-        display: flex;
-        // justify-content: flex-start;
-        // align-self: flex-start;
-        flex-basis: 60%;
-
-        img {
-          max-width: 100%;
-          max-height: 100%;
-          margin-top: 1rem;
-          align-self: flex-start;
-        }
+      .wide-image {
+        flex-direction: column;
       }
 
-      .desc {
-        margin: 1rem 0;
-        flex-basis: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 100%;
-        .details {
-          ul {
-            list-style: none;
+      .main-card-contents {
+        .img {
+          display: flex;
+          flex-basis: 60%;
 
-            li:nth-child(2n) {
-              color: rgb(20,20,20);
-            }
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            margin-top: 1rem;
+            align-self: flex-start;
           }
         }
-        .price {
-          height: 2rem;
+
+        .desc {
           margin: 1rem 0;
+          flex-basis: 40%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          height: 100%;
+          .details {
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            ul {
+              list-style: none;
+
+              li:nth-child(2n) {
+                color: rgb(20,20,20);
+              }
+            }
+          }
+          .price {
+            height: 2rem;
+            margin: 1rem 0 3rem;
+          }
         }
       }
 
-    button {
-      width: 150px;
-      margin-bottom: 1rem;
-      padding: 0.7rem 0;
-      color: white;
-      background: $button-bg-color;
-      border: none;
-      border-radius: 6px;
-      box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
-      flex-basis: 15%;
-    }
+      button {
+        width: 150px;
+        margin-bottom: 1rem;
+        padding: 0.7rem 0;
+        color: white;
+        background: $button-bg-color;
+        border: none;
+        border-radius: 6px;
+        box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
+        flex-basis: 15%;
+      }
     }
 
     // &>div {
@@ -346,49 +353,66 @@ export default {
     // }
   }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
 
-    .card {
-      min-width: 85%;
+  .card {
+    min-width: 85%;
+    max-width: 85%;
+    font-size: 1.6rem;
 
-      .main-card-contents {
-        width: 100%;
-        max-height: 85%;
-        display: flex;
-      }
+    .main-card-contents {
+      width: 100%;
+      max-height: 85%;
+      flex-direction: column;
+    }
 
-      .img {
-        display: flex;
-        justify-content: flex-start;
-        align-self: flex-start;
-        flex-basis: 55%;
+    .img {
+      display: flex;
+      align-self: center;
+      justify-content: center;
+    }
 
-        img {
-          max-width: 100%;
-          max-height: 100%;
-        }
-      }
+    .desc {
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .details {
+        ul {
+          list-style: none;
 
-      .desc {
-        margin: 1rem 0;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        .details {
-          ul {
-            list-style: none;
-
-            li:nth-child(2n) {
-              color: rgb(20,20,20);
-            }
+          li:nth-child(2n) {
+            color: rgb(20,20,20);
           }
         }
-        .price {
-          height: 2rem;
-          margin: 1rem 0;
-        }
+      }
+      .price {
+        height: 2rem;
+        margin: 1rem 0;
       }
     }
+  }
+
+  #product-search {
+    padding: 0 2rem;
+    margin: 1rem auto 0;
+    min-width: 100%;
+    max-width: 100%;
+    background: rgba(21, 141, 41, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &::before, &::after {
+      border: none;
+    }
+
+    div {
+      flex-direction: column;
+    }
+  }
 }
 
 </style>

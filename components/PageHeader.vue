@@ -106,23 +106,35 @@ export default {
       justify-content: space-between;
       font-family: 'Fira Sans Extra Condensed', sans-serif;
     }
-  }
 
-  .navigation a {
-    color: white;
-    padding: 0 2rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0);
-    outline: 7px solid rgba(0, 0, 0, 0);
+    a {
+      color: white;
+      background: rgb(57, 61, 58);
+      outline: 1px solid rgb(57, 61, 58);
+      padding: 0 2rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
 
-    &:hover {
-      background: rgba(0, 0, 0, 0.4);
-      outline: 7px solid rgba(0, 0, 0, 0.4);
-      transition: all 600ms ease;
+      &:hover {
+        background: rgba(0, 0, 0, 0.4);
+        outline: 7px solid rgba(0, 0, 0, 0.4);
+        transition: all 600ms ease;
+      }
+
+    }
+
+    .nuxt-link-active, .nuxt-link-exact-active {
+      background: rgba(0,0,0,0.6);
+      outline: 7px solid rgba(0,0,0,0.6);
     }
   }
+
+@media screen and (max-width: 800px) {
+  .navigation {
+    display: none;
+  }
+}
 
 </style>

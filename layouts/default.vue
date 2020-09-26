@@ -52,7 +52,7 @@
         </form> -->
       </div>
     </div>
-    <div>
+    <div class="cart-actions">
       <div :class="{'cartButton':true, 'cartButtonMove':(viewCart)}" @click="showCart()"></div>
       <div class="cartItems" v-if="this.$store.state.cart.items.length > 0 && !viewCart"><span>{{this.cartQty()}}</span></div>
       <div v-if="!viewCart" class="currencyButton" @click="changeCurrency()">
@@ -178,7 +178,6 @@ export default {
 </script>
 
 <style lang="scss">
-  // @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500&family=Special+Elite&display=swap');
 
 *,
 *::before,
@@ -191,27 +190,6 @@ export default {
 body {
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   color: $normal-font;
-}
-
-.feature-text {
-  font-size: 2rem;
-  color: $titles-color;
-  font-family: 'Special Elite', cursive;
-  padding: 1rem 2rem 2.5rem;
-  position: relative;
-  min-width: 600px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 40px;
-      background: url('../assets/IMAGES/titles-chain.png') no-repeat;
-      background-size: 100% 100%;
-      background-position-x: center;
-    }
 }
 
 .wrap {
@@ -239,6 +217,27 @@ body {
   background: white;
 }
 
+.feature-text {
+  font-size: 2rem;
+  color: $titles-color;
+  font-family: 'Special Elite', cursive;
+  padding: 1rem 2rem 2.5rem;
+  position: relative;
+  min-width: 600px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background: url('../assets/IMAGES/titles-chain.png') no-repeat;
+      background-size: 100% 100%;
+      background-position-x: center;
+    }
+}
+
 .cartButton {
   position: sticky;
   width: 40px;
@@ -252,11 +251,6 @@ body {
   border-bottom-right-radius: 10px;
   transition: all 600ms ease-in-out;
   cursor: pointer;
-
-  img {
-    width: 90%;
-    margin-top: 2px;
-  }
 
   &:hover {
     background: rgba($background, 0.3);
@@ -483,6 +477,50 @@ body {
 
 .paypal-buttons {
   padding: 0 2rem;
+}
+
+@media screen and (max-width: 800px) {
+
+  .wrap {
+    max-width: 100vw;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .cart-actions {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.7);
+    padding: 0.5rem 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+
+    .cartButton {
+      border-radius: 50%;
+      background: transparent;
+      background-image: url('../assets/ICONS/shopping-cart-icon.png');
+      border: 2px solid white;
+    }
+
+    .currencyButton {
+      border: 2px solid white;
+      color: white;
+    }
+  }
+
+  .feature-text {
+    min-width: 0;
+  }
 }
 
 </style>

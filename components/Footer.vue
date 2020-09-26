@@ -37,9 +37,6 @@ export default {
 
     #footer-links {
       margin: 1rem auto 2rem;
-      width: 70%;
-      display: flex;
-      justify-content: space-between;
 
       a {
         min-width: 180px;

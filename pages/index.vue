@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <h3 class="feature-text">
+    <div class="feature-text">
       Green Oil: The world's greenest bicycle maintenance products
-    </h3>
+    </div>
     <br>
     <p>
       Simon created Green Oil after a mountain bike ride through the River Quaggy where he began wondering where he could find a biodegradable lubricant. Other lubes said 'Dangerous for the Environment' on the bottle. So Simon created his own whilst at Southampton University.
@@ -10,9 +10,9 @@
     <p>
       Watch the full story here:
     </p>
-    <h3 class="feature-text">
+    <div class="feature-text">
       Made in Britain. Skin safe. No carcinogenic PTFE.
-    </h3>
+    </div>
     <br>
     <p>
       Green Oil started with a sample batch in 2007 when the Tour de France started in Trafalgar Square, London. Empty bottles purchased through eBay, bottles filled through a reclaimed beer tap, and labels designed in Microsoft Word, printed onto paper and applied with glue.
@@ -20,9 +20,9 @@
       We've come a long way since then. Check out how our branding has changed, and the range grown.
     </p>
     <br>
-    <h3 class="feature-text">
+    <div class="feature-text">
       If you care about your bike and the planet you ride on, you're in the right place.
-    </h3>
+    </div>
       <br>
     <p>
     We've been fighting PTFE and petrochemical pollution since 2007.
