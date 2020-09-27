@@ -68,4 +68,10 @@ export default {
   p {
     font-size: 1.3rem;
   }
+
+  @media screen and (max-width: 800px) {
+    .content {
+      width: 100%;
+    }
+  }
 </style>

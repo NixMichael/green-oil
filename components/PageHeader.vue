@@ -1,5 +1,6 @@
 <template>
   <div class="nav-container">
+    <div id="top-banner">
     <div id="twitter-cta">
       <div id="contact-number">
         <img src="../assets/ICONS/phone-symbol.png" alt="call us" /><p>020 7274 8725</p>
@@ -10,6 +11,7 @@
         <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
         <a target="_blank" href="https://www.facebook.com/bicycleoil"><img src="../assets/ICONS/facebook.png" alt="Facebook" /></a>
       </div>
+    </div>
     </div>
     <div id="header-image">
     </div>
@@ -97,10 +99,11 @@ export default {
 
   #header-image {
     border-top: 1px solid white;
-    height: 250px;
+    min-height: 200px;
     background-image: url('../assets/IMAGES/Banner-Team.png');
-    background-position: center;
-    background-size: auto 100%;
+    background-position-x: center;
+    background-position-y: top;
+    background-size: cover;
     background-repeat: no-repeat;
 
     img {
@@ -149,6 +152,10 @@ export default {
 @media screen and (max-width: 800px) {
   #social-icons {
     opacity: 0;
+  }
+
+  #header-image {
+    min-height: 140px;
   }
 
   .navigation {

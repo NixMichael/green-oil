@@ -21,7 +21,7 @@
       <br><br>
       We ship World Wide. Click on the $USA button for all non-UK and non-European Union orders.
 
-    <div id="product-search">
+    <!-- <div id="product-search">
       <div>
         <div>
         <label>Product Type: </label>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <button class="search">Search</button>
-    </div>
+    </div> -->
 <!-- PRODUCT CARDS -->
     <div class="products">
       <div class="card" v-for="product in products" :key="product.title">
@@ -135,35 +135,36 @@ export default {
     border-radius: 10px;
     padding: 2rem;
     width: 70%;
-    margin: 1.5rem auto;
+    margin: 0.5rem auto;
   }
 
   #product-search {
-    padding: 0 2rem;
+    padding: 1rem 2rem;
     margin: 1rem auto 0;
-    min-width: 100%;
     background: rgba(21, 141, 41, 0.15);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 
-    div:first-child {
+    div {
       max-width: 80%;
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
 
       div {
-        width: 50%;
-        min-width: 300px;
-        padding: 0.5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
         label {
+          align-self: center;
           margin-right: 10px;
+        }
+
+        input {
+          max-width: 80%;
         }
       }
     }
@@ -291,72 +292,14 @@ export default {
         flex-basis: 15%;
       }
     }
-
-    // &>div {
-    //   max-width: 85%;
-    //   min-height: 400px;
-    //   margin: 0 auto 3rem;
-    //   padding: 1rem 2rem;
-    //   border: 1px solid rgba(0,0,0,0.2);
-    //   border-radius: 10px;
-    //   box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-    //   display: grid;
-    //   grid-template-areas: "title title" "img desc" "img desc";
-
-    //   .title {
-    //     grid-area: title;
-    //   }
-
-    //   .img {
-    //     grid-area: img;
-    //     margin-top: 2rem;
-    //     margin-right: 1rem;
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: flex-start;
-    //   }
-
-    //   img {
-    //     max-height: 300px;
-    //     max-width: 100%;
-    //   }
-
-    //   .desc {
-    //     max-width: 100%;
-    //     grid-area: desc;
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: space-around;
-
-    //     div {
-    //       margin: 1rem 0;
-    //     }
-    //   }
-    // }
-
-    // ul {
-    //   margin-top: 2rem;
-    //   li {
-    //     list-style: none;
-
-    //     &:nth-child(2n + 1) {
-    //       color: rgb(27, 27, 27);
-    //     }
-    //   }
-    // }
-
-    // button {
-    //   width: 150px;
-    //   padding: 0.7rem 0;
-    //   color: white;
-    //   background: $button-bg-color;
-    //   border: none;
-    //   border-radius: 6px;
-    //   box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
-    // }
   }
 
 @media screen and (max-width: 800px) {
+
+  #covid-update {
+    width: 100%;
+    margin-top: -3rem;
+  }
 
   .card {
     min-width: 85%;
@@ -397,16 +340,15 @@ export default {
   }
 
   #product-search {
-    padding: 0 2rem;
+    max-width: 95%;
     margin: 1rem auto 0;
-    min-width: 100%;
-    max-width: 100%;
-    background: rgba(21, 141, 41, 0.15);
+    padding: 1rem 1rem 0 1rem;
+  //   background: rgba(21, 141, 41, 0.15);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  //   justify-content: center;
+  //   align-items: center;
+  //   position: relative;
 
     &::before, &::after {
       border: none;
@@ -414,6 +356,11 @@ export default {
 
     div {
       flex-direction: column;
+      div {
+        input {
+          width: 90%;
+        }
+      }
     }
   }
 }

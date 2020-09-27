@@ -229,7 +229,7 @@ body {
   font-size: 2rem;
   color: $titles-color;
   font-family: 'Special Elite', cursive;
-  padding: 1rem 2rem 2.5rem;
+  padding: 1rem 0 2.5rem;
   position: relative;
 
     &::after {
