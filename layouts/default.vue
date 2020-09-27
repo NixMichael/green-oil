@@ -549,25 +549,31 @@ body {
 
     .cartButton {
       border-radius: 50%;
-      background-image: url('../assets/ICONS/shopping-cart-icon.png');
+      width: 36px;
+      height: 36px;
+      // background: transparent;
+      // background-image: url('../assets/ICONS/shopping-cart-icon.png');
+      background: url('../assets/ICONS/shopping-cart-icon-mobile.png');
+      background-size: 90%;
+      background-position: center center;
       border: 2px solid black;
     }
 
-.cartButtonMove {
-  color: black;
-  background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
-  background-size: 95%;
-  background-position-y: center;
-  z-index: 21;
-  transition: all 1200ms ease-out;
+    // .cartButtonMove {
+    //   color: black;
+    //   background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
+    //   background-size: 95%;
+    //   background-position-y: center;
+    //   z-index: 21;
+    //   transition: all 1200ms ease-out;
 
-  &:hover {
-    background: none;
-    background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
-    background-size: 95%;
-    background-position-y: center;
-  }
-}
+    //   &:hover {
+    //     background: none;
+    //     background-image: url('../assets/ICONS/shopping-cart-icon-open.png');
+    //     background-size: 95%;
+    //     background-position-y: center;
+    //   }
+    // }
 
     .cartItems {
       display: none;

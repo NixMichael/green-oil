@@ -213,9 +213,9 @@ export default {
     max-width: 800px;
 
     .card {
-      max-width: 450px;
+      max-width: 200px;
       margin: 0 auto 3rem;
-      padding: 1rem 2rem;
+      padding: 1rem;
       border: 1px solid rgba(0,0,0,0.2);
       border-radius: 10px;
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
@@ -226,13 +226,7 @@ export default {
       .title {
         width: 100%;
         margin-bottom: 1rem;
-      }
-
-      .main-card-contents {
-        width: 100%;
-        height: 85%;
-        margin-bottom: 1rem;
-        display: flex;
+        font-size: 1.5rem;
       }
 
       .wide-image {
@@ -240,6 +234,11 @@ export default {
       }
 
       .main-card-contents {
+        width: 100%;
+        height: 85%;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
         .img {
           display: flex;
           flex-basis: 60%;
@@ -247,27 +246,27 @@ export default {
           img {
             max-width: 100%;
             max-height: 100%;
-            margin-top: 1rem;
+            // margin-top: 1rem;
             align-self: flex-start;
           }
         }
 
         .desc {
-          margin: 1rem 0;
+          margin: 1rem 0 0;
           flex-basis: 40%;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: center;
           height: 100%;
           .details {
             height: 80%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             ul {
               list-style: none;
-
+              font-size: 0.8rem;
               li:nth-child(2n) {
                 color: rgb(20,20,20);
               }
@@ -275,14 +274,15 @@ export default {
           }
           .price {
             height: 2rem;
-            margin: 1rem 0 3rem;
+            margin: 1rem 0;
           }
         }
       }
 
       button {
         width: 150px;
-        margin-bottom: 1rem;
+        max-width: 85%;
+        // margin-bottom: 1rem;
         padding: 0.7rem 0;
         color: white;
         background: $button-bg-color;
@@ -301,10 +301,13 @@ export default {
     margin-top: -3rem;
   }
 
+  .products {
+    max-width: 100%;
+  }
+
   .card {
-    min-width: 85%;
     max-width: 85%;
-    font-size: 1.6rem;
+    font-size: 1rem;
 
     .main-card-contents {
       width: 100%;
@@ -326,7 +329,7 @@ export default {
       .details {
         ul {
           list-style: none;
-
+          font-size: 0.8rem;
           li:nth-child(2n) {
             color: rgb(20,20,20);
           }
@@ -362,6 +365,16 @@ export default {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    min-width: 90%;
+  }
+
+  .main-card-contents {
+    flex-direction: row;
   }
 }
 
