@@ -4,7 +4,7 @@
       <div id="contact-number">
         <img src="../assets/ICONS/phone-symbol.png" alt="call us" /><p>020 7274 8725</p>
       </div>
-      <p>Tweet your favourite bike shop to stock Green Oil!</p>
+      <p id="tweet-call-action">Tweet your favourite bike shop to stock Green Oil!</p>
       <div id="social-icons">
         <a target="_blank" href="https://www.twitter.com/greenoil"><img src="../assets/ICONS/twitter.png" alt="Twitter" /></a>
         <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
@@ -14,7 +14,11 @@
     <div id="header-image">
     </div>
     <div class="navigation">
-      <div>
+      <input type="checkbox" id="toggler"/>
+      <div class="menu-wrapper">
+        <div class="burger-menu"></div>
+      </div>
+      <div @click="hideMenu()" id="menu-items">
         <nuxt-link exact to="/">
           About Green Oil
         </nuxt-link>
@@ -37,6 +41,13 @@
 
 <script>
 export default {
+  methods: {
+    hideMenu () {
+      const menu = document.getElementById('toggler')
+      menu.checked = false
+      console.log('blah')
+    }
+  }
 }
 </script>
 
@@ -44,6 +55,10 @@ export default {
 
   .nav-container {
     background: $background;
+  }
+
+  #toggler {
+    display: none;
   }
 
   #twitter-cta {
@@ -132,7 +147,100 @@ export default {
   }
 
 @media screen and (max-width: 800px) {
+  #social-icons {
+    opacity: 0;
+  }
+
   .navigation {
+    padding: 0;
+    // padding-bottom: 2px;
+    // background: $background;
+
+    .nuxt-link-active, .nuxt-link-exact-active {
+      text-decoration: underline;
+    }
+
+    #toggler {
+      display: block;
+      z-index: 25;
+      opacity: 0;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      width: 35px;
+      height: 40px;
+      &:checked {
+        &~#menu-items {
+          display: flex;
+        }
+        &~.menu-wrapper {
+          .burger-menu {
+            transform: rotate(45deg);
+            &::before {
+              transform: rotate(85deg);
+            }
+          }
+        }
+      }
+    }
+
+    #menu-items {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.95);
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      flex-direction: column;
+
+      a {
+        font-size: 2rem;
+        margin: 1rem;
+        background: none;
+        outline: none;
+
+      }
+    }
+
+    .menu-wrapper {
+      z-index: 24;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      width: 35px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .burger-menu {
+        width: 100%;
+        height: 5px;
+        background: white;
+        transition: all 600ms ease-in-out;
+        &::before, &::after {
+          content: '';
+          width: 100%;
+          height: 5px;
+          background: white;
+          position: absolute;
+          transition: all 600ms ease-in-out;
+        }
+        &::before {
+          top: 0;
+        }
+        &::after {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  #tweet-call-action {
     display: none;
   }
 }

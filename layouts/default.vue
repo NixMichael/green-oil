@@ -231,7 +231,6 @@ body {
   font-family: 'Special Elite', cursive;
   padding: 1rem 2rem 2.5rem;
   position: relative;
-  min-width: 600px;
 
     &::after {
       content: '';
@@ -241,7 +240,7 @@ body {
       width: 100%;
       height: 40px;
       background: url('../assets/IMAGES/titles-chain.png') no-repeat;
-      background-size: 100% 100%;
+      background-size: contain;
       background-position-x: center;
     }
 }
@@ -477,8 +476,22 @@ body {
   box-shadow: 0 0 45px 35px rgba(0,0,0,0.5);
 
   #close-cart {
+    position: absolute;
     visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 83px;
+    width: 40px;
+    height: 40px;
+    margin: 1.5rem 0 0 0;
+    cursor: pointer;
     transition: all 600ms ease;
+
+    img {
+      max-width: 100%;
+    }
   }
 }
 
@@ -518,7 +531,6 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 300px;
-    max-width: 500px;
     width: 100%;
     margin: 0;
     box-shadow: none;
@@ -563,16 +575,13 @@ body {
 
     .cartItems-mobile {
       display: block;
+      align-self: center;
     }
 
     .currencyButton {
       border: 2px solid black;
       color: black;
     }
-  }
-
-  .feature-text {
-    min-width: 0;
   }
 }
 

@@ -199,6 +199,10 @@ export default {
     .search {
       padding: 0.5rem 1rem;
     }
+
+    button {
+      margin: 1rem 0;
+    }
   }
 
   .products {
@@ -208,8 +212,7 @@ export default {
     max-width: 800px;
 
     .card {
-      width: 450px;
-      min-height: 400px;
+      max-width: 450px;
       margin: 0 auto 3rem;
       padding: 1rem 2rem;
       border: 1px solid rgba(0,0,0,0.2);
