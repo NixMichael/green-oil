@@ -307,7 +307,9 @@ export default {
 
   .card {
     max-width: 85%;
-    font-size: 1rem;
+    .title {
+      font-size: 1rem;
+    }
 
     .main-card-contents {
       width: 100%;
@@ -370,11 +372,21 @@ export default {
 
 @media screen and (max-width: 450px) {
   .card {
-    min-width: 90%;
+    .img {
+      max-height: 90px;
+    }
   }
 
   .main-card-contents {
     flex-direction: row;
+    .desc .details {
+      ul li {
+        font-size: 0.6rem;
+      }
+    }
+    .price {
+      font-size: 0.7rem;
+    }
   }
 }
 
