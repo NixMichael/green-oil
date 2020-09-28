@@ -2,8 +2,8 @@
   <div class="footer">
     <div id="footer-links">
       <a target="blank" href="https://www.green-oil.net/wholesale.html">Stock Green Oil</a>
-      <a target="blank" href="https://www.green-oil.net/happiness">Reasons To Be Happy</a>
       <a target="blank" href="https://www.green-oil.net/contact.html">Contact Us</a>
+      <a target="blank" href="https://www.green-oil.net/happiness">Reasons To Be Happy</a>
     </div>
     <p>&copy; {{ thisYear }} Green Oil UK Limited</p><br/>
     <p>Registered Office: Green Oil UK Limited, Unit S7, The Old Granary, 245 Coldharbour Lane, London, SW9 8RR</p><br/>
@@ -36,6 +36,8 @@ export default {
     }
 
     #footer-links {
+      display: flex;
+      justify-content: space-around;
       margin: 1rem auto 2rem;
 
       a {
@@ -47,6 +49,21 @@ export default {
         border-radius: 14px;
         text-decoration: none;
         box-shadow: 0 3px 5px 0 rgba(0,0,0,0.3);
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .footer {
+      margin-bottom: 25px;
+    }
+
+    #footer-links {
+      // flex-direction: column;
+      // align-items: center;
+      flex-wrap: wrap;
+      a {
+        margin-bottom: 1rem;
       }
     }
   }

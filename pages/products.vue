@@ -46,7 +46,7 @@
             {{ product.title }}
           </div>
 
-          <div :class="product.style">
+          <div class="main-card-contents">
             <div class="img">
               <img :src="product.image" :alt="product.title" />
             </div>
@@ -119,6 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 
+// @media screen and (max-width: 450px) {
   .content {
     display: flex;
     flex-direction: column;
@@ -209,12 +210,79 @@ export default {
   .products {
     margin-top: 2rem;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     max-width: 800px;
 
+  .card {
+    margin: 0 0.5rem 3rem;
+    padding: 1rem;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .main-card-contents {
+    height: 85%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    .img {
+      width: 50%;
+      align-self: center;
+      // overflow: hidden;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+    .desc {
+      align-self: center;
+
+      .details {
+        align-items: center;
+        ul li {
+          list-style: none;
+          font-size: 0.6rem;
+        }
+      }
+      .price {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  button {
+    width: 100px;
+    max-width: 85%;
+    // margin-bottom: 1rem;
+    padding: 0.7rem 0;
+    color: white;
+    background: $button-bg-color;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
+    flex-basis: 15%;
+  }
+
+@media screen and (min-width: 450px) {
     .card {
-      max-width: 200px;
-      margin: 0 auto 3rem;
+      width: 180px;
+      margin: 0 0.5rem 3rem;
       padding: 1rem;
       border: 1px solid rgba(0,0,0,0.2);
       border-radius: 10px;
@@ -223,37 +291,29 @@ export default {
       flex-direction: column;
       justify-content: space-between;
 
-      .title {
-        width: 100%;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
       .wide-image {
         flex-direction: column;
       }
 
       .main-card-contents {
-        width: 100%;
+        min-width: 100%;
         height: 85%;
-        margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
-        .img {
-          display: flex;
-          flex-basis: 60%;
+        // justify-content: space-around;
 
+        .img {
+          width: 100%;
+          max-height: 250px;
+          align-self: flex-start;
           img {
             max-width: 100%;
-            max-height: 100%;
-            // margin-top: 1rem;
-            align-self: flex-start;
+            max-height: 200px;
           }
         }
 
         .desc {
-          margin: 1rem 0 0;
-          flex-basis: 40%;
+          margin: 0;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -265,129 +325,52 @@ export default {
             flex-direction: column;
             justify-content: flex-start;
             ul {
-              list-style: none;
-              font-size: 0.8rem;
-              li:nth-child(2n) {
-                color: rgb(20,20,20);
+              margin: 1rem 0;
+              li {
+                list-style: none;
+                font-size: 0.8rem;
+                &:nth-child(2n) {
+                  color: rgb(20,20,20);
+                }
               }
             }
           }
           .price {
-            height: 2rem;
+            font-size: 0.7rem;
             margin: 1rem 0;
           }
         }
       }
-
       button {
         width: 150px;
-        max-width: 85%;
-        // margin-bottom: 1rem;
-        padding: 0.7rem 0;
-        color: white;
-        background: $button-bg-color;
-        border: none;
-        border-radius: 6px;
-        box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
-        flex-basis: 15%;
       }
     }
   }
 
-@media screen and (max-width: 800px) {
+//   #product-search {
+//     max-width: 95%;
+//     margin: 1rem auto 0;
+//     padding: 1rem 1rem 0 1rem;
+//   //   background: rgba(21, 141, 41, 0.15);
+//     display: flex;
+//     flex-direction: column;
+//   //   justify-content: center;
+//   //   align-items: center;
+//   //   position: relative;
 
-  #covid-update {
-    width: 100%;
-    margin-top: -3rem;
-  }
+//     &::before, &::after {
+//       border: none;
+//     }
 
-  .products {
-    max-width: 100%;
-  }
-
-  .card {
-    max-width: 85%;
-    .title {
-      font-size: 1rem;
-    }
-
-    .main-card-contents {
-      width: 100%;
-      max-height: 85%;
-      flex-direction: column;
-    }
-
-    .img {
-      display: flex;
-      align-self: center;
-      justify-content: center;
-    }
-
-    .desc {
-      margin: 1rem 0;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      .details {
-        ul {
-          list-style: none;
-          font-size: 0.8rem;
-          li:nth-child(2n) {
-            color: rgb(20,20,20);
-          }
-        }
-      }
-      .price {
-        height: 2rem;
-        margin: 1rem 0;
-      }
-    }
-  }
-
-  #product-search {
-    max-width: 95%;
-    margin: 1rem auto 0;
-    padding: 1rem 1rem 0 1rem;
-  //   background: rgba(21, 141, 41, 0.15);
-    display: flex;
-    flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  //   position: relative;
-
-    &::before, &::after {
-      border: none;
-    }
-
-    div {
-      flex-direction: column;
-      div {
-        input {
-          width: 90%;
-        }
-      }
-    }
-  }
+//     div {
+//       flex-direction: column;
+//       div {
+//         input {
+//           width: 90%;
+//         }
+//       }
+//     }
+//   }
+// }
 }
-
-@media screen and (max-width: 450px) {
-  .card {
-    .img {
-      max-height: 90px;
-    }
-  }
-
-  .main-card-contents {
-    flex-direction: row;
-    .desc .details {
-      ul li {
-        font-size: 0.6rem;
-      }
-    }
-    .price {
-      font-size: 0.7rem;
-    }
-  }
-}
-
 </style>
