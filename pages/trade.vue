@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h3>Your bike shop can make money whilst doing the right thing!</h3>
+    <div class="feature-text chain-img">Your bike shop can make money<br> whilst doing the right thing!</div>
+    <br>
     <p>
       Clear your shelves of the PTFE petrochemical products, and stock Green Oil (or at least give cyclists the Green Oil option).
       <br>

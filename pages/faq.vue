@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>FAQ</h1>
+    <div class="feature-text chain-img">FAQ</div>
+    <br>
     <div class="content">
       <h4>
         If Green Oil is biodegradable, will it break down quickly on my bike?

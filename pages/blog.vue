@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>BLOG</h1>
+    <div class="feature-text chain-img">BLOG</div>
+    <br><br>
     <h3>
       This is a great place to put any 'helpful advice' content such as 'how to clean your bike chain'. Content that isn't directly selling the products but can be considered extra value for customers. I've just embedded some of the videos for now but this is a good place to improve SEO with short written pieces.
     </h3>
