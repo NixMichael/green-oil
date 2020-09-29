@@ -196,6 +196,22 @@ body {
   color: $normal-font;
 }
 
+.video-content {
+  margin: 0 auto 2rem;
+  width: 90%;
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+  iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border: 0;
+  }
+}
+
 .cartItems-mobile {
   display: none;
 }

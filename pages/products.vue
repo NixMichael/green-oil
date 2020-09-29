@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-      <div class="feature-text">
+      <div class="feature-text chain-img">
         Welcome to our shop!
       </div>
       <br><br>
@@ -140,6 +140,7 @@ export default {
   }
 
   #product-search {
+    width: 90%;
     padding: 1rem 2rem;
     margin: 1rem auto 0;
     background: rgba(21, 141, 41, 0.15);
@@ -209,9 +210,9 @@ export default {
 
   .products {
     margin-top: 2rem;
-    // display: flex;
-    // justify-content: center;
-    // flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     max-width: 800px;
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 1fr));
@@ -384,30 +385,30 @@ export default {
     // }
   }
 
-//   #product-search {
-//     max-width: 95%;
-//     margin: 1rem auto 0;
-//     padding: 1rem 1rem 0 1rem;
-//   //   background: rgba(21, 141, 41, 0.15);
-//     display: flex;
-//     flex-direction: column;
-//   //   justify-content: center;
-//   //   align-items: center;
-//   //   position: relative;
+  #product-search {
+    max-width: 95%;
+    margin: 1rem auto 0;
+    padding: 1rem 1rem 0 1rem;
+  //   background: rgba(21, 141, 41, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-//     &::before, &::after {
-//       border: none;
-//     }
+    &::before, &::after {
+      border: none;
+    }
 
-//     div {
-//       flex-direction: column;
-//       div {
-//         input {
-//           width: 90%;
-//         }
-//       }
-//     }
-//   }
-// }
+    div {
+      flex-direction: column;
+      div {
+        input {
+          width: 90%;
+        }
+      }
+    }
+  }
+
 }
 </style>

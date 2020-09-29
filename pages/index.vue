@@ -9,12 +9,14 @@
     <br><br>
     <p>
       Watch the full story here:<br>
-      <iframe
-        src="https://www.youtube.com/embed/i5XbD6jRHnc"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <div class="video-content">
+        <iframe
+          src="https://www.youtube.com/embed/NpJJcNtzfms"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
     </p>
     <div class="feature-text chain-img">
       Made in Britain. Skin safe. No carcinogenic PTFE.
