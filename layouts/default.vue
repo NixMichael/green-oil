@@ -231,18 +231,20 @@ body {
   font-family: 'Special Elite', cursive;
   padding: 1rem 0 2.5rem;
   position: relative;
+}
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 40px;
-      background: url('../assets/IMAGES/titles-chain.png') no-repeat;
-      background-size: contain;
-      background-position-x: center;
-    }
+.chain-img {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: url('../assets/IMAGES/titles-chain.png') no-repeat;
+    background-size: contain;
+    background-position-x: center;
+  }
 }
 
 .cartButton {
@@ -278,7 +280,7 @@ body {
   background-size: 95%;
   background-position-y: center;
   z-index: 21;
-  transition: all 1200ms ease-out;
+  // transition: all 1200ms ease-out;
 
   &:hover {
     background: none;

@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="feature-text">
+    <div class="feature-text chain-img">
       Green Oil: The world's greenest bicycle maintenance products
     </div>
     <br>
@@ -10,7 +10,7 @@
     <p>
       Watch the full story here:
     </p>
-    <div class="feature-text">
+    <div class="feature-text chain-img">
       Made in Britain. Skin safe. No carcinogenic PTFE.
     </div>
     <br>
@@ -20,7 +20,7 @@
       We've come a long way since then. Check out how our branding has changed, and the range grown.
     </p>
     <br>
-    <div class="feature-text">
+    <div class="feature-text chain-img">
       If you care about your bike and the planet you ride on, you're in the right place.
     </div>
       <br>
