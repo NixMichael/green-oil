@@ -37,6 +37,7 @@ export default {
 
     #footer-links {
       display: flex;
+      flex-direction: row;
       justify-content: space-around;
       margin: 1rem auto 2rem;
 
@@ -56,15 +57,24 @@ export default {
   @media screen and (max-width: 450px) {
     .footer {
       margin-bottom: 25px;
-    }
 
-    #footer-links {
-      // flex-direction: column;
-      // align-items: center;
-      flex-wrap: wrap;
-      a {
-        margin-bottom: 1rem;
+      #footer-links {
+        flex-direction: column;
+        align-items: center;
+        a {
+          width: 50%;
+          margin-bottom: 1rem;
+        }
       }
     }
+
+    // #footer-links {
+    //   flex-direction: column;
+    //   align-items: center;
+    //   // flex-wrap: wrap;
+    //   a {
+    //     margin-bottom: 1rem;
+    //   }
+    // }
   }
 </style>

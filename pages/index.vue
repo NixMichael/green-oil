@@ -8,7 +8,13 @@
       Simon created Green Oil after a mountain bike ride through the River Quaggy where he began wondering where he could find a biodegradable lubricant. Other lubes said 'Dangerous for the Environment' on the bottle. So Simon created his own whilst at Southampton University.
     <br><br>
     <p>
-      Watch the full story here:
+      Watch the full story here:<br>
+      <iframe
+        src="https://www.youtube.com/embed/i5XbD6jRHnc"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </p>
     <div class="feature-text chain-img">
       Made in Britain. Skin safe. No carcinogenic PTFE.

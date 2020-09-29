@@ -259,7 +259,7 @@ body {
   background-position-y: center;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  transition: all 600ms ease-in-out;
+  // transition: all 600ms ease-in-out;
   cursor: pointer;
 
   &:hover {

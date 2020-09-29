@@ -40,13 +40,13 @@
     </div> -->
 <!-- PRODUCT CARDS -->
     <div class="products">
-      <div class="card" v-for="product in products" :key="product.title">
+      <div v-for="product in products" :key="product.title" :class="product.style">
 
           <div class="title">
             {{ product.title }}
           </div>
 
-          <div class="main-card-contents">
+          <div :class="product.descStyle">
             <div class="img">
               <img :src="product.image" :alt="product.title" />
             </div>
@@ -209,62 +209,93 @@ export default {
 
   .products {
     margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: center;
+    // flex-wrap: wrap;
     max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-auto-flow: dense;
+    grid-gap: 15px;
 
-  .card {
-    margin: 0 0.5rem 3rem;
-    padding: 1rem;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 10px;
-    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 3rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-
-  .main-card-contents {
-    height: 85%;
-    min-width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1rem;
-    .img {
-      width: 50%;
-      align-self: center;
-      // overflow: hidden;
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
+    .card {
+      margin: 0 0.5rem 3rem;
+      padding: 1rem;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 10px;
+      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      grid-column: span 3;
     }
-    .desc {
-      align-self: center;
 
-      .details {
-        align-items: center;
-        ul li {
-          list-style: none;
-          font-size: 0.6rem;
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 3rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .main-card-contents {
+      height: 85%;
+      min-width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 1rem;
+      .img {
+        width: 50%;
+        min-height: 200px;
+        max-height: 250px;
+        align-self: center;
+        // overflow: hidden;
+        img {
+          max-width: 100%;
+          max-height: 100%;
         }
       }
-      .price {
-        font-size: 0.7rem;
+      .desc {
+        align-self: center;
+
+        .details {
+          justify-content: flex-start;
+          align-items: center;
+          ul {
+            margin-top: 1rem;
+            li {
+              list-style: none;
+              font-size: 0.6rem;
+            }
+          }
+        }
+        .price {
+          margin-top: 1rem;
+          font-size: 0.7rem;
+        }
       }
     }
-  }
+
+    .wide-image {
+      flex-direction: column;
+      .img {
+          min-height: 50px;
+          width: 100%;
+      }
+    }
+
+  // .wide-image {
+  //   flex-direction: column;
+  //   .img {
+  //     width: 50%;
+  //     img {
+  //       max-width: 100%;
+  //       max-height: 100%;
+  //     }
+  //   }
+  // }
 
   button {
     width: 100px;
@@ -279,9 +310,9 @@ export default {
     flex-basis: 15%;
   }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 550px) {
     .card {
-      width: 180px;
+      // width: 180px;
       margin: 0 0.5rem 3rem;
       padding: 1rem;
       border: 1px solid rgba(0,0,0,0.2);
@@ -290,10 +321,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
-      .wide-image {
-        flex-direction: column;
-      }
+      grid-column: span 1;
 
       .main-card-contents {
         min-width: 100%;
@@ -328,7 +356,7 @@ export default {
               margin: 1rem 0;
               li {
                 list-style: none;
-                font-size: 0.8rem;
+                font-size: 1rem;
                 &:nth-child(2n) {
                   color: rgb(20,20,20);
                 }
@@ -341,10 +369,19 @@ export default {
           }
         }
       }
+
       button {
         width: 150px;
       }
     }
+
+    .wide-image {
+      grid-column: span 2;
+    }
+
+    // .wide-image {
+    //   grid-column: span 3;
+    // }
   }
 
 //   #product-search {

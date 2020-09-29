@@ -11,7 +11,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Wet_Chain_Lube-Bottle-Green_Oil.png'),
     price: 6.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Dry_Chain_Wax-bottle-Green_Oil.png'),
     price: 14.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     id: 3,
@@ -38,7 +40,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Rocket_Salad_Basil_Seeds.png'),
     price: 2.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     id: 4,
@@ -52,7 +55,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Bike-Armour.png'),
     price: 4.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Green Oil On Tour',
@@ -65,7 +69,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/On_Tour-Bottle-Green-Oil.gif'),
     price: 2.39,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Green Oil EcoSpray Lube',
@@ -79,7 +84,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/EcoSpray_Lube-Bottle-Green_Oil.gif'),
     price: 7.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Ecogrease',
@@ -91,7 +97,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Ecogrease-Bottle-Green-Oil.gif'),
     price: 8.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Agent Apple Degreaser (300ml)',
@@ -103,7 +110,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Agent-Apple-Extreme.gif'),
     price: 14.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Green Clean Bike Cleaner',
@@ -117,7 +125,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Green-Clean-bike-cleaner.gif'),
     price: 9.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Clean Chain Degreaser Jelly (100ml)',
@@ -130,7 +139,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Clean-Chain-Degreaser.gif'),
     price: 5.99,
-    style: 'main-card-contents'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Ultra Chain Brush',
@@ -141,61 +151,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Ultra-Chain-Brush.gif'),
     price: 14.99,
-    style: 'main-card-contents'
-  },
-  {
-    title: 'EcoRag',
-    desc: [
-      'Carbon fibre safe',
-      'SOft and durable',
-      'Made from upcycled fabric',
-      'Can be washed in a washing machine!',
-      'Helps stop fabric fibres going to landfill',
-      'Quality thick fabric'
-    ],
-    image: require('../assets/IMAGES/products/Eco_Rag.gif'),
-    price: 4.99,
-    style: 'main-card-contents'
-  },
-  {
-    title: 'Green Oil Bamboo Detail Brush',
-    desc: [
-      'Ideal for fine cleaning parts in degreaser',
-      'Bioplastic nylon bristles',
-      'Sustainably sourced bamboo handle',
-      'Great for hard to reach places'
-    ],
-    image: require('../assets/IMAGES/products/Bamboo_Brush.gif'),
-    price: 7.99,
-    style: 'main-card-contents'
-  },
-  {
-    title: 'Green Oil Fruit Box Rack',
-    desc: [
-      'Made from upcycled wood',
-      'Hand built in the United Kingdom',
-      'Helps Greenwich Mencap workers in an enjoyable wood workshop',
-      'Great for your Green Oil, small tools, bike parts and more',
-      'Does not include the products shown, you get the wood rack only for this great price!',
-      'Measures approximately 24cm x 24cm x 5.5cm'
-    ],
-    image: require('../assets/IMAGES/products/FruitBox.png'),
-    price: 21.99,
-    style: 'main-card-contents'
-  },
-  {
-    title: 'Eco Rider Deluxe Box (empty)',
-    desc: [
-      'Waterproof to depth of 1 metre',
-      'Ideal for safely storing Green Oil products, tools and more',
-      'Great for yoru garage, bike shed shelf or car boot',
-      'Ideal for storing emergency supplies or dry clothing',
-      'Made in Great Britain',
-      'Measures approximately 35cm x 15cm x 14cm'
-    ],
-    image: require('../assets/IMAGES/products/Eco_Rider_Deluxe_Box.gif'),
-    price: 4.99,
-    style: 'main-card-contents wide-image'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Eco Rider Deluxe Set',
@@ -213,6 +170,65 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Eco-Rider-Deluxe-Set.png'),
     price: 64.99,
-    style: 'main-card-contents wide-image'
+    style: 'card wide-image',
+    descStyle: 'main-card-contents wide-image'
+  },
+  {
+    title: 'EcoRag',
+    desc: [
+      'Carbon fibre safe',
+      'SOft and durable',
+      'Made from upcycled fabric',
+      'Can be washed in a washing machine!',
+      'Helps stop fabric fibres going to landfill',
+      'Quality thick fabric'
+    ],
+    image: require('../assets/IMAGES/products/Eco_Rag.gif'),
+    price: 4.99,
+    style: 'card',
+    descStyle: 'main-card-contents'
+  },
+  {
+    title: 'Green Oil Bamboo Detail Brush',
+    desc: [
+      'Ideal for fine cleaning parts in degreaser',
+      'Bioplastic nylon bristles',
+      'Sustainably sourced bamboo handle',
+      'Great for hard to reach places'
+    ],
+    image: require('../assets/IMAGES/products/Bamboo_Brush.gif'),
+    price: 7.99,
+    style: 'card',
+    descStyle: 'main-card-contents'
+  },
+  {
+    title: 'Green Oil Fruit Box Rack',
+    desc: [
+      'Made from upcycled wood',
+      'Hand built in the United Kingdom',
+      'Helps Greenwich Mencap workers in an enjoyable wood workshop',
+      'Great for your Green Oil, small tools, bike parts and more',
+      'Does not include the products shown, you get the wood rack only for this great price!',
+      'Measures approximately 24cm x 24cm x 5.5cm'
+    ],
+    image: require('../assets/IMAGES/products/FruitBox2.png'),
+    price: 21.99,
+    style: 'card',
+    descStyle: 'main-card-contents wide-image'
+  },
+  {
+    title: 'Eco Rider Deluxe Box (empty)',
+    desc: [
+      'Waterproof to depth of 1 metre',
+      'Ideal for safely storing Green Oil products, tools and more',
+      'Great for yoru garage, bike shed shelf or car boot',
+      'Ideal for storing emergency supplies or dry clothing',
+      'Made in Great Britain',
+      'Measures approximately 35cm x 15cm x 14cm'
+    ],
+    image: require('../assets/IMAGES/products/Eco_Rider_Deluxe_Box.png'),
+    price: 4.99,
+    style: 'card wide-image',
+    descStyle: 'main-card-contents wide-image'
   }
 ]
