@@ -26,7 +26,7 @@ export default {
     color: white;
     background: $banner-bg;
     padding: 0.5rem 0 2rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     a, a:visited {
       color: rgb(228, 228, 228);
