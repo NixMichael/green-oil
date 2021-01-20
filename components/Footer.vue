@@ -6,11 +6,8 @@
       <a target="blank" href="https://www.green-oil.net/happiness">Reasons To Be Happy</a>
     </div>
     <p>&copy; {{ thisYear }} Green Oil UK Limited</p><br/>
-    <p>Registered Office: Green Oil UK Limited, Unit S7, The Old Granary, 245 Coldharbour Lane, London, SW9 8RR</p><br/>
-    <p>Registered in England and Wales, No. 6470586. VAT: 980 6213 19</p><br/>
     <p>Contact us on 020 7274 8725</p><br/>
     <p>Tweet us <a target="_blank" href="https://www.twitter.com/greenoil">@GreenOil</a> | Find us on Facebook: <a target="_blank" href="https://www.facebook.com/bicycleoil">/BicycleOil</a> | Follow us at <a target="_blank" href="https://www.instagram.com/greenoiluk">Instagram/GreenOilUK</a>.</p><br/>
-    <p>Product images from this site may be used for use in selling our products.</p>
   </div>
 </template>
 

@@ -5,7 +5,6 @@
       <div id="contact-number">
         <img src="../assets/ICONS/phone-symbol.png" alt="call us" /><p>020 7274 8725</p>
       </div>
-      <p id="tweet-call-action">Tweet your favourite bike shop to stock Green Oil!</p>
       <div id="social-icons">
         <a target="_blank" href="https://www.twitter.com/greenoil"><img src="../assets/ICONS/twitter.png" alt="Twitter" /></a>
         <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
