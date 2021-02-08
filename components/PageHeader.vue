@@ -98,7 +98,8 @@ export default {
 
   #header-image {
     border-top: 1px solid white;
-    height: 200px;
+    height: 130px;
+    background-color: '#a9c7a9';
     background-image: url('../assets/IMAGES/Logo.png');
     background-position-x: left;
     background-position-y: top;
