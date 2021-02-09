@@ -181,6 +181,7 @@ export default {
     .nuxt-link-active, .nuxt-link-exact-active {
       text-decoration: underline;
       text-decoration-color: white;
+      text-decoration-thickness: 5px;
       &::after {
         content: '';
         position: absolute;
