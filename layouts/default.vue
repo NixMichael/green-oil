@@ -218,21 +218,19 @@ body {
 
 .wrap {
   margin: 0 auto;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
 }
 
 .container {
-  margin-left: 40px;
-  width: 85%;
+  // margin-left: 40px;
   min-width: 800px;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   text-align: center;
   box-shadow: 0 0 4px 0 black;
-  background: $background;
+  background: $banner-bg;
 }
 
 .main-content {
@@ -275,7 +273,6 @@ body {
   background-position-y: center;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  // transition: all 600ms ease-in-out;
   cursor: pointer;
 
   &:hover {
@@ -296,7 +293,6 @@ body {
   background-size: 95%;
   background-position-y: center;
   z-index: 21;
-  // transition: all 1200ms ease-out;
 
   &:hover {
     background: none;
@@ -540,10 +536,6 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-
-  .wrap {
-    max-width: 100vw;
-  }
 
   .container {
     display: flex;

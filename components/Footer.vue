@@ -5,9 +5,8 @@
       <a target="blank" href="https://www.green-oil.net/contact.html">Contact Us</a>
       <a target="blank" href="https://www.green-oil.net/happiness">Reasons To Be Happy</a>
     </div>
-    <p>&copy; {{ thisYear }} Green Oil UK Limited</p><br/>
-    <p>Contact us on 020 7274 8725</p><br/>
-    <p>Tweet us <a target="_blank" href="https://www.twitter.com/greenoil">@GreenOil</a> | Find us on Facebook: <a target="_blank" href="https://www.facebook.com/bicycleoil">/BicycleOil</a> | Follow us at <a target="_blank" href="https://www.instagram.com/greenoiluk">Instagram/GreenOilUK</a>.</p><br/>
+    <p>&copy; {{ thisYear }} Green Oil UK Limited</p>
+    <p>Contact us on 020 7274 8725</p><br><br>
   </div>
 </template>
 
