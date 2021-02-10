@@ -385,6 +385,7 @@ export default {
 }
 
 @media screen and (max-width: 800px) {
+
   .products {
     grid-template-columns: 1fr;
 

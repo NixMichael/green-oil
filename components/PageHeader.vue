@@ -76,7 +76,7 @@ export default {
     font-size: 1.1rem;
     font-weight: 300;
     color: white;
-    background: $banner-bg;
+    background: transparent;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -272,6 +272,7 @@ export default {
         width: 100%;
         height: 5px;
         background: white;
+        outline: 1px solid $banner-bg;
         transition: all 600ms ease-in-out;
         
         &::before, &::after {
@@ -280,6 +281,7 @@ export default {
           height: 5px;
           background: white;
           position: absolute;
+          outline: 1px solid $banner-bg;
           transition: all 600ms ease-in-out;
         }
         &::before {

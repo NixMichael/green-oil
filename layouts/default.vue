@@ -523,6 +523,11 @@ body {
 
 @media screen and (max-width: 800px) {
 
+  .wrap {
+    margin: 0 auto;
+    width: 97vw;
+  }
+
   .container {
     display: flex;
     flex-direction: column;

@@ -63,9 +63,9 @@ export default {
     }
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 800px) {
     .footer {
-      margin-bottom: 25px;
+      margin-bottom: 50px;
 
       #footer-links {
         flex-direction: column;
