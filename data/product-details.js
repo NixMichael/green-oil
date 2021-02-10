@@ -170,8 +170,8 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Eco-Rider-Deluxe-Set.png'),
     price: 64.99,
-    style: 'card wide-image',
-    descStyle: 'main-card-contents wide-image'
+    style: 'card',
+    descStyle: 'main-card-contents'
   },
   {
     title: 'EcoRag',
@@ -214,7 +214,7 @@ export default [
     image: require('../assets/IMAGES/products/FruitBox2.png'),
     price: 21.99,
     style: 'card',
-    descStyle: 'main-card-contents wide-image'
+    descStyle: 'main-card-contents'
   },
   {
     title: 'Eco Rider Deluxe Box (empty)',
@@ -228,7 +228,7 @@ export default [
     ],
     image: require('../assets/IMAGES/products/Eco_Rider_Deluxe_Box.png'),
     price: 4.99,
-    style: 'card wide-image',
-    descStyle: 'main-card-contents wide-image'
+    style: 'card',
+    descStyle: 'main-card-contents'
   }
 ]

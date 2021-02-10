@@ -214,13 +214,13 @@ export default {
     flex-wrap: wrap;
     max-width: 800px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-flow: dense;
     grid-gap: 15px;
 
     .card {
       margin: 0 0.5rem 3rem;
-      padding: 1rem;
+      // padding: 1rem;
       border: 1px solid rgba(0,0,0,0.2);
       border-radius: 10px;
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
@@ -241,17 +241,17 @@ export default {
     }
 
     .main-card-contents {
-      height: 85%;
-      min-width: 100%;
+      // height: 85%;
+      width: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       margin-bottom: 1rem;
+      border: 1px solid gray;
       .img {
-        width: 50%;
-        min-height: 200px;
+        // width: 50%;
+        // min-height: 200px;
         max-height: 250px;
         align-self: center;
-        // overflow: hidden;
         img {
           max-width: 100%;
           max-height: 100%;
@@ -263,6 +263,8 @@ export default {
         .details {
           justify-content: flex-start;
           align-items: center;
+          width: 100%;
+          border: 2px dotted orange;
           ul {
             margin-top: 1rem;
             li {
@@ -286,21 +288,9 @@ export default {
       }
     }
 
-  // .wide-image {
-  //   flex-direction: column;
-  //   .img {
-  //     width: 50%;
-  //     img {
-  //       max-width: 100%;
-  //       max-height: 100%;
-  //     }
-  //   }
-  // }
-
   button {
     width: 100px;
     max-width: 85%;
-    // margin-bottom: 1rem;
     padding: 0.7rem 0;
     color: white;
     background: $button-bg-color;
@@ -312,7 +302,6 @@ export default {
 
 @media screen and (min-width: 550px) {
     .card {
-      // width: 180px;
       margin: 0 0.5rem 3rem;
       padding: 1rem;
       border: 1px solid rgba(0,0,0,0.2);
@@ -320,19 +309,14 @@ export default {
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       grid-column: span 1;
 
       .main-card-contents {
-        min-width: 100%;
-        height: 85%;
-        display: flex;
-        flex-direction: column;
-        // justify-content: space-around;
 
         .img {
           width: 100%;
-          max-height: 250px;
+          max-height: 200px;
           align-self: flex-start;
           img {
             max-width: 100%;
@@ -344,14 +328,15 @@ export default {
           margin: 0;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
+          justify-content: space-between;
           align-items: center;
           height: 100%;
           .details {
-            height: 80%;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            width: 100%;
             ul {
               margin: 1rem 0;
               li {
@@ -365,7 +350,7 @@ export default {
           }
           .price {
             font-size: 0.7rem;
-            margin: 1rem 0;
+            // margin: 1rem 0;
           }
         }
       }
@@ -376,19 +361,16 @@ export default {
     }
 
     .wide-image {
-      grid-column: span 2;
+      border: 4px solid green;
+      grid-column: span 1;
     }
-
-    // .wide-image {
-    //   grid-column: span 3;
-    // }
   }
 
   #product-search {
     max-width: 95%;
     margin: 1rem auto 0;
     padding: 1rem 1rem 0 1rem;
-  //   background: rgba(21, 141, 41, 0.15);
+    // background: rgba(21, 141, 41, 0.15);
     display: flex;
     flex-direction: column;
     justify-content: center;

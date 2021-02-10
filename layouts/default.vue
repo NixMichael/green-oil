@@ -225,7 +225,7 @@ body {
 
 .container {
   min-height: 100vh;
-  width: 80%;
+  width: 95%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   text-align: center;
