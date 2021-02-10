@@ -201,7 +201,8 @@ export default {
   }
 
   #header-image {
-    min-height: 140px;
+    max-height: 140px;
+    max-width: 80vw;
   }
 
   .navigation {
