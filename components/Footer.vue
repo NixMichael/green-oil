@@ -1,12 +1,21 @@
 <template>
   <div class="footer">
     <div id="footer-links">
-      <a target="blank" href="https://www.green-oil.net/wholesale.html">Stock Green Oil</a>
-      <a target="blank" href="https://www.green-oil.net/contact.html">Contact Us</a>
-      <a target="blank" href="https://www.green-oil.net/happiness">Reasons To Be Happy</a>
+      <div>
+        <p>Contact us on 020 7274 8725</p><br>
+      </div>
+      <div id="social-icons">
+        <!-- <div id="contact-number">
+          <img src="../assets/ICONS/phone-symbol.png" alt="call us" /><p>020 7274 8725</p>
+        </div> -->
+        <a target="_blank" href="https://www.twitter.com/greenoil"><img src="../assets/ICONS/twitter.png" alt="Twitter" /></a>
+        <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
+        <a target="_blank" href="https://www.facebook.com/bicycleoil"><img src="../assets/ICONS/facebook.png" alt="Facebook" /></a>
+      </div>
+      <div>
+        <p>&copy; {{ thisYear }} Green Oil UK Limited</p>
+      </div>
     </div>
-    <p>&copy; {{ thisYear }} Green Oil UK Limited</p>
-    <p>Contact us on 020 7274 8725</p><br><br>
   </div>
 </template>
 
@@ -24,7 +33,7 @@ export default {
   .footer {
     color: white;
     background: $banner-bg;
-    padding: 0.5rem 0 2rem;
+    padding: 0.5rem 0;
     font-size: 1rem;
 
     a, a:visited {
@@ -34,18 +43,22 @@ export default {
     #footer-links {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
-      margin: 1rem auto 2rem;
+      justify-content: space-between;
+      margin: 1rem auto;
+      padding: 0 2rem;
 
-      a {
-        min-width: 180px;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        color: $background;
-        background: white;
-        border-radius: 14px;
-        text-decoration: none;
-        box-shadow: 0 3px 5px 0 rgba(0,0,0,0.3);
+      p {
+        padding-top: 0.5em;
+      }
+
+      #social-icons {
+       width: 120px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+        a img {
+          height: 2rem;
+        }
       }
     }
   }

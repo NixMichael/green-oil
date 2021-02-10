@@ -1,8 +1,8 @@
 <template>
   <div>
+    <div class="content">
     <div class="feature-text chain-img">FAQ</div>
     <br>
-    <div class="content">
       <h4>
         If Green Oil is biodegradable, will it break down quickly on my bike?
       </h4>
@@ -42,14 +42,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   h1 {
     margin: 2rem 0;
   }
 
   .content {
-    margin: 0 auto;
-    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;

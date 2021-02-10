@@ -119,7 +119,6 @@ export default {
 
 <style lang="scss" scoped>
 
-// @media screen and (max-width: 450px) {
   .content {
     display: flex;
     flex-direction: column;

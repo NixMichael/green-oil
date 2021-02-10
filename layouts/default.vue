@@ -202,6 +202,7 @@ body {
   overflow: hidden;
   padding-top: 56.25%;
   position: relative;
+
   iframe {
     position: absolute;
     height: 100%;
@@ -217,15 +218,14 @@ body {
 }
 
 .wrap {
-  margin: 0 auto;
+  margin: 0 calc(5vw - 30px) 0 5vw;
   display: flex;
   justify-content: center;
 }
 
 .container {
-  // margin-left: 40px;
-  min-width: 800px;
   min-height: 100vh;
+  width: 80%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   text-align: center;
@@ -237,28 +237,14 @@ body {
   width: 100%;
   padding: 1rem 3rem;
   background: white;
+  overflow: hidden;
 }
 
 .feature-text {
-  font-size: 2rem;
+  font-size: 1.8em;
+  margin: 0.5em 0;
   color: $titles-color;
   font-family: 'Special Elite', cursive;
-  padding: 1rem 0 2.5rem;
-  position: relative;
-}
-
-.chain-img {
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    background: url('../assets/IMAGES/titles-chain.png') no-repeat;
-    background-size: contain;
-    background-position-x: center;
-  }
 }
 
 .cartButton {

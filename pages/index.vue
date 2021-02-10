@@ -1,11 +1,11 @@
 <template>
   <div class="content">
     <div class="feature-text chain-img">
-      Green Oil: The world's greenest bicycle maintenance products
+      Greenest bicycle maintenance products
     </div>
     <br>
     <p>
-      Simon created Green Oil after a mountain bike ride through the River Quaggy where he began wondering where he could find a biodegradable lubricant. Other lubes said 'Dangerous for the Environment' on the bottle. So Simon created his own whilst at Southampton University.
+      Simon created Green Oil after a mountain bike ride through the River Quaggy where he began wondering where he could find a biodegradable lubricant. Other lubes said 'Dangerous for the Environment' on the bottle. So Simon created his own whilst at Southampton University.</p>
     <br><br>
     <p>
       Watch the full story here:<br>
@@ -43,11 +43,6 @@
     <p>
     From using recycled (not just recyclable) plastic in our bottles to plant based fully biodegradable formulas, we're protecting you, your bike, and the planet we share.
     </p>
-    <br>
-    <h3 class="feature-text">
-      The Green Oil range works.<br>We've won awards.<br>
-      Developed by Cyclists, for Cyclists.
-    </h3>
   </div>
 </template>
 
@@ -68,14 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .content {
-    margin: 0 auto 2rem;
-    width: 70%;
-  }
-
-  p {
-    font-size: 1.3rem;
-  }
 
   @media screen and (max-width: 800px) {
     .content {

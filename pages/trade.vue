@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <div class="feature-text chain-img">Your bike shop can make money<br> whilst doing the right thing!</div>
     <br>
     <p>

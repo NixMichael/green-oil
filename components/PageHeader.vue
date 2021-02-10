@@ -80,16 +80,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
-    #contact-number {
-      width: 420px;
-      height: 20px;
-      margin-left: 1rem;
-      display: flex;
-      p {
-        width: 120px;
-      }
-    }
+    z-index: 40;
 
     #social-icons {
       width: 120px;
@@ -98,6 +89,7 @@ export default {
       justify-content: space-between;
       a img {
         height: 2rem;
+        cursor: pointer;
       }
     }
   }
@@ -115,7 +107,7 @@ export default {
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
-    // transform: rotate(-5deg);
+    // transform: rotate(-1deg);
 
     img {
       width: 100%;
@@ -131,7 +123,7 @@ export default {
 
     .waves {
       position: absolute;
-      top: -1px;
+      top: 0;
       left: 0;
       right: 0;
       height: 15px;
@@ -179,7 +171,7 @@ export default {
     }
 
     .nuxt-link-active, .nuxt-link-exact-active {
-      color: rgb(20,20,20);
+      color: white;
       &::after {
         content: '';
         position: absolute;
