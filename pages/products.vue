@@ -209,25 +209,21 @@ export default {
 
   .products {
     margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     max-width: 800px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    // grid-auto-flow: dense;
     grid-gap: 15px;
 
     .card {
-      margin: 0 0.5rem 3rem;
-      // padding: 1rem;
-      border: 1px solid rgba(0,0,0,0.2);
+      // margin: 0 0.5rem 3rem;
+      padding: 1rem;
+      border: 1px solid gray;
       border-radius: 10px;
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      grid-column: span 3;
     }
 
     .title {
@@ -246,10 +242,7 @@ export default {
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
-      border: 1px solid gray;
       .img {
-        // width: 50%;
-        // min-height: 200px;
         max-height: 250px;
         align-self: center;
         img {
@@ -264,7 +257,6 @@ export default {
           justify-content: flex-start;
           align-items: center;
           width: 100%;
-          border: 2px dotted orange;
           ul {
             margin-top: 1rem;
             li {
@@ -302,15 +294,15 @@ export default {
 
 @media screen and (min-width: 550px) {
     .card {
-      margin: 0 0.5rem 3rem;
-      padding: 1rem;
-      border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 10px;
-      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      grid-column: span 1;
+      // margin: 0 0.5rem 3rem;
+      // padding: 1rem;
+      // border: 1px solid rgba(0,0,0,0.2);
+      // border-radius: 10px;
+      // box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: flex-start;
+      // grid-column: span 1;
 
       .main-card-contents {
 
@@ -336,7 +328,6 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            width: 100%;
             ul {
               margin: 1rem 0;
               li {
@@ -392,4 +383,19 @@ export default {
   }
 
 }
+
+@media screen and (max-width: 800px) {
+  .products {
+    grid-template-columns: 1fr;
+
+    .card .main-card-contents {
+      flex-direction: row;
+
+      .img {
+        max-width: 50%;
+      }
+    }
+  }
+}
+
 </style>
