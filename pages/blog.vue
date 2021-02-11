@@ -82,20 +82,23 @@
   }
 
   @media screen and (max-width: 800px) {
-    .blog-container .blog-content {
-      flex-direction: column;
-      width: 90%;
-      min-height: 350px;
-      padding-bottom: 1em;
-
-      .blog-text {
+    .blog-container {
+      width: 100%;
+      .blog-content {
+        flex-direction: column;
         width: 100%;
-        padding: 0 1em 1em;
-      }
+        min-height: 350px;
+        padding-bottom: 1em;
 
-      iframe {
-        height: 90%;
-        margin: 0 auto;
+        .blog-text {
+          width: 100%;
+          padding: 0 1em 1em;
+        }
+
+        iframe {
+          height: 90%;
+          margin: 0 auto;
+        }
       }
     }
   }
