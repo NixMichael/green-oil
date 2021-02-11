@@ -198,10 +198,10 @@ body {
 
 .video-content {
   margin: 0 auto 2rem;
-  width: 90%;
   overflow: hidden;
-  padding-top: 56.25%;
   position: relative;
+  width: 53%;
+  padding-top: 33%;
 
   iframe {
     position: absolute;
@@ -292,10 +292,10 @@ body {
   position: sticky;
   width: 26px;
   height: 26px;
-  top: 10rem;
+  top: 7rem;
   margin-left: 6px;
   color: white;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 50%;
   background: rgba($titles-color, 1);
   z-index: 0;
@@ -310,7 +310,7 @@ body {
   height: 32px;
   top: 12rem;
   margin-left: 3px;
-  font-size: 1.1rem;
+  font-size: 1.1em;
   border-radius: 50%;
   border: 2px solid black;
   transition: all 600ms ease-in-out;
@@ -365,7 +365,7 @@ body {
       padding: 0.5rem;
       display: flex;
       justify-content: space-between;
-      font-size: 1.2rem;
+      font-size: 1.2em;
       margin-bottom: 0.5rem;
       min-height: 85px;
 
@@ -398,17 +398,17 @@ body {
 
         p {
           text-align: left;
-          font-size: 1.1rem;
+          font-size: 1.1em;
 
           &:last-child {
-            font-size: 1rem;
+            font-size: 1em;
           }
         }
       }
 
       div:last-child {
         width: 10%;
-        font-size: 1.1rem;
+        font-size: 1.1em;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -421,7 +421,7 @@ body {
         p {
           height: 20px;
           width: 20px;
-          font-size: 0.8rem;
+          font-size: 0.8em;
           padding-top: 2px;
           color: white;
           background: rgba(0, 0, 0, 0.5);
@@ -436,7 +436,7 @@ body {
 
   #cartTotal {
     width: 85%;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-align: right;
     margin: 1rem 0 2rem;
     padding: 0 2rem;
@@ -589,6 +589,12 @@ body {
       border: 2px solid black;
       color: black;
     }
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  body {
+    font-size: 2em;
   }
 }
 

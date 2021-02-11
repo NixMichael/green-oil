@@ -64,6 +64,11 @@ export default {
 
 <style lang="scss" scoped>
 
+.content {
+  width: 80%;
+  margin: 0 auto;
+}
+
   @media screen and (max-width: 800px) {
     .content {
       width: 100%;

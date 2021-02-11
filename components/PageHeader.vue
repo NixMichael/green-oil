@@ -32,9 +32,6 @@
       <nuxt-link exact to="faq">
         FAQ
       </nuxt-link>
-      <nuxt-link exact to="/trade">
-        Stock Green Oil
-      </nuxt-link>
       <nuxt-link exact to="/blog">
         Blog
       </nuxt-link>
@@ -70,8 +67,8 @@ export default {
 
   #twitter-cta {
     position: absolute;
-    bottom: 10px;
-    right: 0;
+    top: 25px;
+    right: 10px;
     font-family: 'Fira Sans Extra Condensed', sans-serif;
     font-size: 1.1rem;
     font-weight: 300;
@@ -80,7 +77,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    z-index: 40;
+    z-index: 20;
 
     #social-icons {
       width: 120px;
@@ -145,7 +142,7 @@ export default {
     // }
 
     div {
-      max-width: 760px;
+      // max-width: 760px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
@@ -156,7 +153,7 @@ export default {
       margin-top: 10px;
       color: $titles-color;
       padding: 0.5rem 2rem;
-      font-size: 1.2rem;
+      font-size: 1.2em;
       text-decoration: none;
       display: flex;
       justify-content: center;
@@ -296,6 +293,13 @@ export default {
 
   #tweet-call-action {
     display: none;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .navigation a {
+    // font-size: 2.5em;
+    min-width: 15%;
   }
 }
 

@@ -53,12 +53,14 @@
     grid-template-columns: 1fr;
     gap: 2em;
     padding-top: 2rem;
+    width: 80%;
+    margin: 0 auto;
 
     .blog-content {
       margin: 0 auto;
       display: flex;
-      max-width: 700px;
-      height: 250px;
+      width: 60%;
+      min-height: 17vw;
       box-shadow: 0 5px 10px 2px rgba(0,0,0,0.3);
       padding: 1em 0.75em 0;
       
@@ -73,8 +75,8 @@
       }
 
       iframe {
-        height: 90%;
-        width: 90%;
+        height: 95%;
+        width: 100%;
       }
     }
   }
