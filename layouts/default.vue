@@ -295,7 +295,7 @@ body {
   top: 7rem;
   margin-left: 6px;
   color: white;
-  font-size: 1em;
+  font-size: 1rem;
   border-radius: 50%;
   background: rgba($titles-color, 1);
   z-index: 0;
@@ -596,6 +596,11 @@ body {
   body {
     font-size: 2em;
   }
+
+.cartItems, .currencyButton {
+  font-size: 0.5em;
+}
+  
 }
 
 </style>
