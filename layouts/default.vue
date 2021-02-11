@@ -235,7 +235,7 @@ body {
 
 .main-content {
   width: 100%;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 4rem;
   background: white;
   overflow: hidden;
 }

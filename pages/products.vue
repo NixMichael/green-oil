@@ -4,22 +4,9 @@
         Welcome to our shop!
       </div>
       <br><br>
-      <div id="covid-update">
-        <h4>We're running as normal during the COVID-19 pandemic</h4>
-        <br>
-        Royal Mail is understandably a little slow to deliver, but otherwise all is well.
-        We love local bike shops, but some still don't stock Green Oil incredibly.
-      </div>
+      We use eco-friendly and reclaimed packaging material for all orders and aim to get your order to you within 3-5 working days.
       <br><br>
-      We aim to get anything ordered to you in 3-5 working days, usually 3 within the UK.
-      We use eco-friendly and reclaimed packaging material for all orders.
-      <br><br>
-      We don't send out confirmation emails in an effort to reduce our carbon footprint. We are available on the phone and by email.
-      <br><br>
-      You can pay by cheque!
-      If you're in the UK, add up the prices below, add £2.99 for orders less than £12, and post it to Green Oil UK Ltd, Unit S7, The Old Granary, 245 Coldharbour Lane, Brixton, London, SW9 8RR. Cheques payable to 'Green Oil UK Ltd'.
-      <br><br>
-      We ship World Wide. Click on the $USA button for all non-UK and non-European Union orders.
+      We don't send out confirmation emails in an effort to reduce our carbon footprint. However we are available on the phone and by email should you have any questions or queries.
 
     <!-- <div id="product-search">
       <div>
