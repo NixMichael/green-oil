@@ -252,8 +252,8 @@ body {
   position: sticky;
   width: 40px;
   height: 40px;
-  top: 12rem;
-  background: rgba($background,0.7);
+  top: 9rem;
+  background: rgba($button-bg-color, 0.7);
   background-image: url('../assets/ICONS/shopping-cart-icon.png');
   background-size: 95%;
   background-position-y: center;
@@ -308,7 +308,7 @@ body {
   position: sticky;
   width: 32px;
   height: 32px;
-  top: 15rem;
+  top: 12rem;
   margin-left: 3px;
   font-size: 1.1rem;
   border-radius: 50%;
