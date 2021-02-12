@@ -198,14 +198,14 @@ export default {
 
   .products {
     margin-top: 2rem;
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
-    // grid-auto-flow: dense;
-    grid-gap: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
 
     .card {
-      // margin: 0 0.5rem 3rem;
+      min-width: 250px;
+      width: 10em;
       padding: 1rem;
       border: 1px solid gray;
       border-radius: 10px;
@@ -226,7 +226,6 @@ export default {
     }
 
     .main-card-contents {
-      // height: 85%;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -247,6 +246,7 @@ export default {
           align-items: center;
           width: 100%;
           ul {
+            max-width: 200px;
             margin-top: 1rem;
             li {
               list-style: none;
@@ -255,17 +255,8 @@ export default {
           }
         }
         .price {
-          margin-top: 1rem;
           font-size: 0.7rem;
         }
-      }
-    }
-
-    .wide-image {
-      flex-direction: column;
-      .img {
-          min-height: 50px;
-          width: 100%;
       }
     }
 
@@ -281,20 +272,9 @@ export default {
     flex-basis: 15%;
   }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 800px) {
     .card {
-      // margin: 0 0.5rem 3rem;
-      // padding: 1rem;
-      // border: 1px solid rgba(0,0,0,0.2);
-      // border-radius: 10px;
-      // box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: flex-start;
-      // grid-column: span 1;
-
       .main-card-contents {
-
         .img {
           width: 100%;
           max-height: 200px;
@@ -330,7 +310,6 @@ export default {
           }
           .price {
             font-size: 0.7rem;
-            // margin: 1rem 0;
           }
         }
       }
@@ -341,7 +320,6 @@ export default {
     }
 
     .wide-image {
-      border: 4px solid green;
       grid-column: span 1;
     }
   }
@@ -350,7 +328,6 @@ export default {
     max-width: 95%;
     margin: 1rem auto 0;
     padding: 1rem 1rem 0 1rem;
-    // background: rgba(21, 141, 41, 0.15);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -376,13 +353,15 @@ export default {
 @media screen and (max-width: 800px) {
 
   .products {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    .card {
+      width: 100%;
+      .main-card-contents {
+        flex-direction: row;
 
-    .card .main-card-contents {
-      flex-direction: row;
-
-      .img {
-        max-width: 50%;
+        .img {
+          max-width: 50%;
+        }
       }
     }
   }
