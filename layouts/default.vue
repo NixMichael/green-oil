@@ -408,7 +408,7 @@ body {
 
       div:last-child {
         width: 10%;
-        font-size: 1.1em;
+        font-size: 0.9em;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -436,7 +436,7 @@ body {
 
   #cartTotal {
     width: 85%;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     text-align: right;
     margin: 1rem 0 2rem;
     padding: 0 2rem;
@@ -456,10 +456,12 @@ body {
 
 .cart-header {
   width: 100%;
+  font-size: 1.3rem;
   padding-bottom: 1rem;
 }
 
 .cart-contents {
+  font-size: 1rem;
   max-width: 80%;
   height: 70%;
   overflow-y: hidden;
@@ -482,7 +484,7 @@ body {
     justify-content: center;
     align-items: center;
     top: 0;
-    right: 83px;
+    right: 40px;
     width: 40px;
     height: 40px;
     margin: 1.5rem 0 0 0;
