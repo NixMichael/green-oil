@@ -83,21 +83,19 @@
     .video-container {
       max-width: 100%;
 
-      .iframe-container {
-        position: relative;
-        height: 0;
-        padding-bottom: 56.25%;
+      // .iframe-container {
+      //   position: relative;
+      //   height: 0;
+      //   padding-bottom: 56.25%;
 
-        iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          // height: 95%;
-          // width: 100%;
-        }
-      }
+      //   iframe {
+      //     position: absolute;
+      //     top: 0;
+      //     left: 0;
+      //     width: 100%;
+      //     height: 100%;
+      //   }
+      // }
     }
     }
   }

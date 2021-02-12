@@ -76,14 +76,5 @@ export default {
         }
       }
     }
-
-    // #footer-links {
-    //   flex-direction: column;
-    //   align-items: center;
-    //   // flex-wrap: wrap;
-    //   a {
-    //     margin-bottom: 1rem;
-    //   }
-    // }
   }
 </style>
