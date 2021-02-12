@@ -1,21 +1,18 @@
 <template>
   <div class="content">
     <div class="feature-text chain-img">
-      Greenest bicycle maintenance products
+      If you care about your bike and the planet you ride on, you're in the right place.
     </div>
-    <br>
+      <br>
     <p>
       Simon created Green Oil after a mountain bike ride through the River Quaggy where he began wondering where he could find a biodegradable lubricant. Other lubes said 'Dangerous for the Environment' on the bottle. So Simon created his own whilst at Southampton University.</p>
     <br><br>
     <p>
       Watch the full story here:<br>
-      <div class="video-content">
-        <iframe
-          src="https://www.youtube.com/embed/NpJJcNtzfms"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+      <div class="video-container">
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/NpJJcNtzfms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
     </p>
     <div class="feature-text chain-img">
@@ -28,10 +25,6 @@
       We've come a long way since then. Check out how our branding has changed, and the range grown.
     </p>
     <br>
-    <div class="feature-text chain-img">
-      If you care about your bike and the planet you ride on, you're in the right place.
-    </div>
-      <br>
     <p>
     We've been fighting PTFE and petrochemical pollution since 2007.
     </p>
@@ -69,8 +62,17 @@ export default {
   margin: 0 auto;
 }
 
+.video-container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
   @media screen and (max-width: 800px) {
     .content {
+      width: 100%;
+    }
+
+    .video-container {
       width: 100%;
     }
   }

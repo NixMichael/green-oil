@@ -194,22 +194,25 @@ export default {
 body {
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   color: $normal-font;
+  line-height: 1.5;
+
+  p {
+    margin: 0 auto;
+    max-width: 80ch;
+  }
 }
 
-.video-content {
-  margin: 0 auto 2rem;
-  overflow: hidden;
+.iframe-container {
   position: relative;
-  width: 53%;
-  padding-top: 33%;
+  height: 0;
+  padding-bottom: 56.25%;
 
   iframe {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
     top: 0;
-    border: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -242,7 +245,9 @@ body {
 
 .feature-text {
   font-size: 1.8em;
-  margin: 0.5em 0;
+  line-height: 1.1;
+  margin: 1em auto 0.5em;
+  max-width: 40ch;
   color: $titles-color;
   font-family: 'Special Elite', cursive;
 }
@@ -526,8 +531,8 @@ body {
 @media screen and (max-width: 800px) {
 
   .wrap {
-    margin: 0 auto;
-    width: 97vw;
+    margin: 0;
+    width: 100vw;
   }
 
   .container {
@@ -599,9 +604,9 @@ body {
     font-size: 2em;
   }
 
-.cartItems, .currencyButton {
-  font-size: 0.5em;
-}
+  .cartItems, .currencyButton {
+    font-size: 0.5em;
+  }
   
 }
 

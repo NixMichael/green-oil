@@ -1,18 +1,13 @@
 <template>
   <div>
   <div class="nav-container">
-    <!-- <div id="top-banner"> -->
     <div id="twitter-cta">
       <div id="social-icons">
-        <!-- <div id="contact-number">
-          <img src="../assets/ICONS/phone-symbol.png" alt="call us" /><p>020 7274 8725</p>
-        </div> -->
         <a target="_blank" href="https://www.twitter.com/greenoil"><img src="../assets/ICONS/twitter.png" alt="Twitter" /></a>
         <a target="_blank" href="https://www.instagram.com/greenoiluk"><img src="../assets/ICONS/instagram.png" alt="Instagram" /></a>
         <a target="_blank" href="https://www.facebook.com/bicycleoil"><img src="../assets/ICONS/facebook.png" alt="Facebook" /></a>
       </div>
     </div>
-    <!-- </div> -->
     <div id="header-image">
     </div>
   </div>
@@ -56,7 +51,7 @@ export default {
 
   .nav-container {
     width: 100%;
-    height: 130px;
+    min-height: 130px;
     background: $banner-bg;
     position: relative;
   }
@@ -104,7 +99,6 @@ export default {
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
-    // transform: rotate(-1deg);
 
     img {
       width: 100%;
@@ -129,20 +123,7 @@ export default {
       background-size: contain;
     }
 
-    // & ::before {
-    //   content: '';
-    //   width: 100%;
-    //   height: 20px;
-    //   position: absolute;
-    //   top: -20px;
-    //   left: 0;
-    //   background-image: url('../assets/IMAGES/header-wave.png');
-    //   background-size: contain;
-    //   z-index: 0;
-    // }
-
     div {
-      // max-width: 760px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
@@ -160,8 +141,6 @@ export default {
       position: relative;
 
       &:hover {
-        // background: rgba(0, 0, 0, 0.4);
-        // outline: 7px solid rgba(0, 0, 0, 0.4);
         color: white;
         transition: all 600ms ease;
       }
