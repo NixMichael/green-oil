@@ -9,6 +9,11 @@
       </div>
     </div>
     <div id="header-image">
+      <img src='../assets/GRAPHICS/LogoWhite_400px.png'
+                    srcset="../assets/GRAPHICS/LogoWhite_800px.webp 800w,
+                    ../assets/GRAPHICS/LogoWhite_400px.webp 400w,
+                    ../assets/GRAPHICS/LogoWhite_200px.webp 200w"
+                    alt='Green Oil Logo' />
     </div>
   </div>
   <div class="navigation">
@@ -54,6 +59,12 @@ export default {
     min-height: 130px;
     background: $banner-bg;
     position: relative;
+
+    // background-image: url('../assets/IMAGES/LogoWhite.png');
+    // background-position-x: 1rem;
+    // background-position-y: 130%;
+    // background-size: auto 90%;
+    // background-repeat: no-repeat;
   }
 
   #toggler {
@@ -88,20 +99,18 @@ export default {
 
   #header-image {
     position: absolute;
-    left: 15px;
-    top: 8px;
-    height: 130px;
-    width: 100%;
+    left: 0;
+    bottom: -9px;
+    height: 90%;
+    max-width: 100%;
+    padding: 0 1em;
+    display: flex;
+    justify-content: flex-start;
     background-color: '#a9c7a9';
-    background-image: url('../assets/IMAGES/LogoWhite.png');
-    background-position-x: left;
-    background-position-y: top;
-    background-size: contain;
-    background-repeat: no-repeat;
     z-index: 1;
 
     img {
-      width: 100%;
+      height: 100%;
     }
   }
 
