@@ -20,17 +20,13 @@
     </div>
     <br>
     <p>
-      Green Oil started with a sample batch in 2007 when the Tour de France started in Trafalgar Square, London. Empty bottles purchased through eBay, bottles filled through a reclaimed beer tap, and labels designed in Microsoft Word, printed onto paper and applied with glue.
+      Green Oil started with a sample batch in 2007 when the Tour de France started in Trafalgar Square, London. Empty bottles purchased through eBay, bottles filled through a reclaimed beer tap, and labels designed in Microsoft Word.
       <br><br>
       We've come a long way since then. Check out how our branding has changed, and the range grown.
     </p>
     <br>
     <p>
-    We've been fighting PTFE and petrochemical pollution since 2007.
-    </p>
-      <br>
-    <p>
-    We've been raising awareness of the harm petrochemicals and PTFE can do in a workshop environment, in your garage, and to the rivers and seas we all enjoy.
+    We've been fighting PTFE and petrochemical pollution since 2007, raising awareness of the harm petrochemicals and PTFE can do in a workshop environment, in your garage, and to the rivers and seas we all enjoy.
     </p>
       <br>
     <p>

@@ -2,7 +2,7 @@
   <div class="footer">
     <div id="footer-links">
       <div>
-        <p>Contact us on 020 7274 8725</p><br>
+        <p>Call us on 020 7274 8725</p><br>
       </div>
       <div id="social-icons">
         <!-- <div id="contact-number">
@@ -46,6 +46,10 @@ export default {
       justify-content: space-between;
       margin: 1rem auto;
       padding: 0 2rem;
+
+      div {
+        width: 33%;
+      }
 
       p {
         padding-top: 0.5em;

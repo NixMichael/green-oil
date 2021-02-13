@@ -13,12 +13,14 @@
         <div v-if="$store.state.cart.total > 0" class="cart-contents">
         <ul>
           <li v-for="item in this.$store.state.cart.items" :key="item.item">
-              <div>
-                <img :src="item.image" :alt="item.item"/>
-              </div>
-              <div>
-                <p class="cart-item-description">{{item.item}}</p>
-                <p>{{ $store.state.currency[$store.state.currencySelect] }}{{ (item.price * $store.state.currencyConversion).toFixed(2) }}</p>
+              <div class="item-summary">
+                <div>
+                  <img :src="item.image" :alt="item.item"/>
+                </div>
+                <div>
+                  <p class="cart-item-description">{{item.item}}</p>
+                  <p>{{ $store.state.currency[$store.state.currencySelect] }}{{ (item.price * $store.state.currencyConversion).toFixed(2) }}</p>
+                </div>
               </div>
               <div>
                 <img src="@/assets/ICONS/increment.png" @click="increaseItemQty(item)"/>
@@ -362,11 +364,12 @@ body {
   }
 
   ul {
-    width: 90%;
+    width: 100%;
     margin: 2rem auto 0;
     list-style: none;
 
     li {
+      width: 100%;
       padding: 0.5rem;
       display: flex;
       justify-content: space-between;
@@ -381,37 +384,26 @@ body {
         background: rgba(0,0,0,0.03);
       }
 
-      div:first-child {
-        width: 20%;
+      .item-summary {
         display: flex;
-        align-items: flex-start;
-        justify-content: center;
+        // align-items: flex-start;
+        // justify-content: center;
 
         img {
           margin-top: 5px;
-          max-width: 100%;
-          max-height: 65px;
+          width: 50px;
         }
-      }
 
-      div:nth-child(2) {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        min-width: 250px;
+        div:nth-child(2) {
 
         p {
           text-align: left;
-          font-size: 1.1em;
-
-          &:last-child {
-            font-size: 1em;
-          }
+          font-size: 0.9em;
         }
       }
+      }
 
-      div:last-child {
+      & > div:last-child {
         width: 10%;
         font-size: 0.9em;
         display: flex;
@@ -427,7 +419,6 @@ body {
           height: 20px;
           width: 20px;
           font-size: 0.8em;
-          padding-top: 2px;
           color: white;
           background: rgba(0, 0, 0, 0.5);
           border-radius: 50%;
@@ -472,8 +463,8 @@ body {
   overflow-y: hidden;
   justify-self: flex-start;
   &:hover {
-    margin-left: 15px;
-    max-width: calc(80% + 15px);
+    margin-left: 20px;
+    max-width: calc(80% + 20px);
     overflow-y: scroll;
   }
 }
