@@ -240,7 +240,7 @@ body {
 
 .main-content {
   width: 100%;
-  padding: 1rem 3rem 4rem;
+  padding: 1rem 1rem 4rem;
   background: white;
   overflow: hidden;
 }

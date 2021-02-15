@@ -1,62 +1,61 @@
 <template>
   <div class="content">
-      <div class="feature-text chain-img">
-        Welcome to our shop!
-      </div>
-      <br><br>
-      We use eco-friendly and reclaimed packaging material for all orders and aim to get your order to you within 3-5 working days.
-      <br><br>
-      We don't send out confirmation emails in an effort to reduce our carbon footprint. However we are available on the phone and by email should you have any questions or queries.
+    <div class="feature-text chain-img">
+      Welcome to our shop!
+    </div>
+    <br><br>
+    <p>
+    We use eco-friendly and reclaimed packaging material for all orders and aim to get your order to you within 3-5 working days.
+    </p>
+    <p>
+    We don't send out confirmation emails in an effort to reduce our carbon footprint. However we are available on the phone and by email should you have any questions or queries.
+    </p>
 
-    <!-- <div id="product-search">
+  <!-- <div id="product-search">
+    <div>
       <div>
-        <div>
-        <label>Product Type: </label>
-          <select>
-            <option name="allProducts">All Products</option>
-            <option name="lubes">Lubes</option>
-            <option name="grease">Greases</option>
-          </select>
-        </div>
-        <div>
-        <label>Keyword: </label>
-          <input type="text" />
-        </div>
+      <label>Product Type: </label>
+        <select>
+          <option name="allProducts">All Products</option>
+          <option name="lubes">Lubes</option>
+          <option name="grease">Greases</option>
+        </select>
       </div>
-      <button class="search">Search</button>
-    </div> -->
-<!-- PRODUCT CARDS -->
-    <div class="products">
-      <div v-for="product in products" :key="product.title" :class="product.style">
-
+      <div>
+      <label>Keyword: </label>
+        <input type="text" />
+      </div>
+    </div>
+    <button class="search">Search</button>
+  </div> -->
+  <!-- PRODUCT CARDS -->
+  <div class="products">
+    <div v-for="product in products" :key="product.title" class="card">
+        <!-- <div> -->
           <div class="title">
             {{ product.title }}
           </div>
-
           <div :class="product.descStyle">
             <div class="img">
               <img :src="product.image" :alt="product.title" />
             </div>
-
-            <div class="desc">
-              <div class="details">
-                <ul>
-                  <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
-                </ul>
-              </div>
-              <div class="price">
-                <h1>
-                  {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
-                </h1>
-              </div>
+            <div class="details">
+              <ul>
+                <li v-for="description in product.desc" :key="description.index">{{ description }}</li>
+              </ul>
             </div>
           </div>
-          <div id="cart-actions">
-            <button @click="newForCart(product.title, product.price, product.image, product.id)" :name="product.title">Add To Cart</button>
+        <!-- </div> -->
+        <div class="card-section">
+          <div class="price">
+            <h1>
+              {{ $store.state.currency[$store.state.currencySelect] }}{{ (product.price * $store.state.currencyConversion).toFixed(2) }}
+            </h1>
           </div>
+          <button @click="newForCart(product.title, product.price, product.image, product.id)" :name="product.title">Add To Cart</button>
+        </div>
       </div>
     </div>
-<!-- PRODUCT CARDS -->
   </div>
 </template>
 
@@ -110,7 +109,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
     margin: 0 auto;
   }
 
@@ -204,125 +202,67 @@ export default {
     gap: 1em;
 
     .card {
-      min-width: 250px;
-      width: 10em;
+      width: 40ch;
       padding: 1rem;
-      border: 1px solid gray;
-      border-radius: 10px;
-      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.25);
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-    }
-
-    .title {
-      display: flex;
       align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 3rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
 
-    .main-card-contents {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1rem;
-      .img {
-        max-height: 250px;
-        align-self: center;
-        img {
-          max-width: 100%;
-          max-height: 100%;
-        }
+      .title {
+        font-size: 2rem;
+        margin-bottom: 1em;
+        height: 4rem;
       }
-      .desc {
-        align-self: center;
+
+      .card-section, .card-section-wide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.5em 0;
+        width: 100%;
+
+        &:last-child {
+          width: 70%;
+          justify-self: flex-end;
+        }
+
+        .img {
+          width: 90%;
+          img {
+            max-height: 20ch;
+            max-width: 90%;
+          }
+        }
 
         .details {
-          justify-content: flex-start;
-          align-items: center;
-          width: 100%;
           ul {
-            max-width: 200px;
-            margin-top: 1rem;
+            max-width: 35ch;
+            min-height: 15ch;
+            text-align: center;
+            padding: 0 1em;
             li {
               list-style: none;
-              font-size: 0.6rem;
-            }
-          }
-        }
-        .price {
-          font-size: 0.7rem;
-        }
-      }
-    }
+              font-size: 1em;
 
-  button {
-    width: 100px;
-    max-width: 85%;
-    padding: 0.7rem 0;
-    color: white;
-    background: $button-bg-color;
-    border: none;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
-    flex-basis: 15%;
-  }
-
-@media screen and (min-width: 800px) {
-    .card {
-      .main-card-contents {
-        .img {
-          width: 100%;
-          max-height: 200px;
-          align-self: flex-start;
-          img {
-            max-width: 100%;
-            max-height: 200px;
-          }
-        }
-
-        .desc {
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: center;
-          height: 100%;
-          .details {
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            ul {
-              margin: 1rem 0;
-              li {
-                list-style: none;
-                font-size: 1rem;
-                &:nth-child(2n) {
-                  color: rgb(20,20,20);
-                }
+              &:nth-child(2n) {
+                color: black;
               }
             }
           }
-          .price {
-            font-size: 0.7rem;
-          }
+        }
+
+        button {
+          padding: 1rem 1.5rem;
+          color: white;
+          background: $button-bg-color;
+          border: none;
+          border-radius: 6px;
+          box-shadow: 0 5px 5px 0 rgba(37, 37, 37, 0.5);
         }
       }
-
-      button {
-        width: 150px;
-      }
-    }
-
-    .wide-image {
-      grid-column: span 1;
-    }
-  }
+}
 
   #product-search {
     max-width: 95%;
@@ -350,19 +290,41 @@ export default {
 
 }
 
-@media screen and (max-width: 800px) {
-
-  .products {
-    flex-direction: column;
-    .card {
-      width: 100%;
-      .main-card-contents {
-        flex-direction: row;
-
-        .img {
-          max-width: 50%;
+@media screen and (max-width: 1000px) {
+  .products .card {
+    width: 95%;
+    .card-section, .card-section-wide {
+      flex-direction: row;
+      justify-content: center;
+      * {
+        margin: 0 1em;
+      }
+      .img {
+        max-width: 45%;
+        img {
+          max-width: 90%;
         }
       }
+
+      .details ul {
+        max-width: 40ch;
+        padding: 0;
+        li {
+          font-size: 1.2em;
+        }
+      }
+    }
+    .card-section-wide {
+      flex-direction: column;
+      .img {
+        max-width: 80%;
+        img {
+          max-width: 80%;
+        }
+      }
+    }
+    .card-section:last-child {
+      flex-direction: column;
     }
   }
 }
